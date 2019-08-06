@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="ISO-8859-1"?><pnml>
+<net id="Net-One" type="P/T net">
+<token id="Default" enabled="true" red="0" green="0" blue="0"/>
+<place id="P0">
+<graphics>
+<position x="375.0" y="255.0"/>
+</graphics>
+<name>
+<value>P0</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>Default,0</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+</place>
+<place id="P1">
+<graphics>
+<position x="585.0" y="255.0"/>
+</graphics>
+<name>
+<value>P1</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>Default,0</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+</place>
+<transition id="maquina">
+<graphics>
+<position x="465.0" y="255.0"/>
+</graphics>
+<name>
+<value>maquina</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>0</value>
+</orientation>
+<rate>
+<value>1</value>
+</rate>
+<timed>
+<value>false</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="moneda 1">
+<graphics>
+<position x="255.0" y="345.0"/>
+</graphics>
+<name>
+<value>moneda 1</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>0</value>
+</orientation>
+<rate>
+<value>1</value>
+</rate>
+<timed>
+<value>false</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="moneda 2">
+<graphics>
+<position x="255.0" y="255.0"/>
+</graphics>
+<name>
+<value>moneda 2</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>0</value>
+</orientation>
+<rate>
+<value>1</value>
+</rate>
+<timed>
+<value>false</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="moneda 5">
+<graphics>
+<position x="255.0" y="165.0"/>
+</graphics>
+<name>
+<value>moneda 5</value>
+<graphics>
+<offset x="-4.0" y="34.0"/>
+</graphics>
+</name>
+<orientation>
+<value>0</value>
+</orientation>
+<rate>
+<value>1</value>
+</rate>
+<timed>
+<value>false</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<transition id="T4">
+<graphics>
+<position x="705.0" y="270.0"/>
+</graphics>
+<name>
+<value>T4</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>0</value>
+</orientation>
+<rate>
+<value>1</value>
+</rate>
+<timed>
+<value>false</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+</transition>
+<arc id="maquina to P1" source="maquina" target="P1">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="481" y="267" curvePoint="false"/>
+<arcpath id="001" x="582" y="267" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="moneda 1 to P0" source="moneda 1" target="P0">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="271" y="357" curvePoint="false"/>
+<arcpath id="001" x="375" y="276" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="moneda 2 to P0" source="moneda 2" target="P0">
+<graphics/>
+<inscription>
+<value>Default,2</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="271" y="267" curvePoint="false"/>
+<arcpath id="001" x="372" y="267" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="moneda 5 to P0" source="moneda 5" target="P0">
+<graphics/>
+<inscription>
+<value>Default,5</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="271" y="177" curvePoint="false"/>
+<arcpath id="001" x="375" y="257" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="P0 to maquina" source="P0" target="maquina">
+<graphics/>
+<inscription>
+<value>Default,15</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="401" y="267" curvePoint="false"/>
+<arcpath id="001" x="471" y="267" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="P1 to T4" source="P1" target="T4">
+<graphics/>
+<inscription>
+<value>Default,1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<arcpath id="000" x="611" y="269" curvePoint="false"/>
+<arcpath id="001" x="711" y="282" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+</net>
+</pnml>
