@@ -28,7 +28,7 @@ public class Main {
 	private static final int NUMBER_OF_THREADS=26;
 	private static final int EXECUTION_TIME=35;
 	private static final TimeUnit TIME_UNIT=TimeUnit.SECONDS;
-	private static final boolean FLAG_TEST_PRIORITIES=false;
+	private static final boolean FLAG_TEST_PRIORITIES=true;
 	/*
 	 * La politica puede ser:
 	 *	0: aleatoria.

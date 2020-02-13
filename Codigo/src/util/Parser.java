@@ -111,8 +111,7 @@ public class Parser {
 			obtenerMatriz(iMarcado[0], "Marcado",tableRowElements);
 			obtenerMatriz(iTInvariant, "Tinvariante",tableRowElementsInv);
 			obtenerMatriz(iPInvariant, "Pinvariante",tableRowElementsInv);
-//			obtenerMarcado();
-			//obtenerTiempos();
+
 		} 
 		catch (IOException e) 
 		{
@@ -187,10 +186,10 @@ public class Parser {
 
 			for(int i = 0; i<datos.length-columna; i++) {
 				datos[i] = datos[i+columna];
-//				System.out.print(datos[i]);
+				System.out.print(datos[i]);
 			}
 
-
+			System.out.println("");
 
 		for (int i = 0; i < fila; i++) 
 		{
@@ -201,8 +200,12 @@ public class Parser {
 					if(!(tag=="Tinvariante" | tag == "Pinvariante")) {
 						if(tag=="Marcado")
 							matriz[j][i] = Integer.parseInt(datos[(i)*(fila-1) + (j+1)]);
-						else
-							matriz[i][j] = Integer.parseInt(datos[(i)*(fila-1) + (j+1)]);
+						else {
+							matriz[i][j] = Integer.parseInt(datos[(i)*(columna+1) + (j+1)]);
+//							System.out.print(matriz[i][j]);
+//							System.out.print(" ");
+//							System.out.println((i)*(fila-1) + (j+1));
+							}
 					}
 						
 						

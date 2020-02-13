@@ -5,6 +5,7 @@ package monitor;
 import java.io.File;
 import jxl.*;
 import logueo.Logger;
+import util.Parser;
 
 
 
@@ -43,7 +44,7 @@ public class RedDePetri{
 
 	public RedDePetri(String path, Logger log){
 		this.path=path;
-		this.setMatricesFromExcel(path);
+		this.setMatrices();
 
 		setCantTransiciones(I[1].length);
 
@@ -53,12 +54,13 @@ public class RedDePetri{
 
 		this.B=getMatrizB_Actualizada(); //Calculo Matriz B
 		this.logica_temporal.updateTimeStamp(this.getConjuncionEAndB(), this.getConjuncionEAndB(),  -1);
-		//this.transicionesDisparadas=new ArrayList<Integer>();
+
+		
 		this.M0=this.M.clone(); //Marcado inicial
-		salto_linea="\n";
 
 
-		if((System.getProperty("os.name")).equals("Windows 10")) {salto_linea="\r\n";}
+
+
 
 		//Sumatoria de todos los disparos efectuados por transicion.
 		suma_disparos_transiciones=new int[this.getCantTransiciones()][1]; 
@@ -205,7 +207,7 @@ public class RedDePetri{
 				//Logueo el contador de transiciones disparadas
 				this.log.createMessage("Cantidad de transiciones disparadas:"+salto_linea+String.valueOf(this.contadorTransicionesDisparadas), 2);
 				//Logueo la transicion disparada
-				this.log.addMessage(String.valueOf(transicion)+ new String(salto_linea), 1);
+				this.log.addMessage(String.valueOf(transicion)+ new String("/n"), 1);
 
 			}
 			catch(Exception e){
@@ -292,101 +294,38 @@ public class RedDePetri{
 	 * @param path Direccion donde se encuentra el archivo de Excel
 	 * 
 	 */
-	private void setMatricesFromExcel(String path) {
-		File file = new File(path);
-		Workbook archivoExcelMatrices;
+	private void setMatrices() {
+		Parser myParser = new Parser();
+		myParser.leerRed();
 
 		try {
-				archivoExcelMatrices = Workbook.getWorkbook(file);
-				Sheet paginaExcelI = archivoExcelMatrices.getSheet(2);
-				int columnas = paginaExcelI.getColumns();
-				int filas = paginaExcelI.getRows();
-				I = new int[filas - 1][columnas - 1];
-				for (int i = 1; i < columnas; i++) {
-					for (int j = 1; j < filas; j++) {
-						I[j - 1][i - 1] = Integer.parseInt(paginaExcelI.getCell(i, j).getContents());
-					}
-				}
-	
-				Sheet paginaExcelH = archivoExcelMatrices.getSheet(3);
-				columnas = paginaExcelH.getColumns();
-				filas = paginaExcelH.getRows();
-	
-				H = new int[filas - 1][columnas - 1];
-				for (int i = 1; i < columnas; i++) {
-					for (int j = 1; j < filas; j++) {
-						H[j - 1][i - 1] = Integer.parseInt(paginaExcelH.getCell(i, j).getContents());
-	
-					}
-	
-				}
-	
-	
-	
-	
-				Sheet paginaExcelM= archivoExcelMatrices.getSheet(4);
-				columnas = paginaExcelM.getColumns();
-				M = new int[columnas - 1][1];
-				for (int j = 1; j < columnas; j++) {
-					M[j - 1][0]= Integer.parseInt(paginaExcelM.getCell(j, 2).getContents());
-				}
-	
-	
-	
-				Sheet paginaExcelTInv = archivoExcelMatrices.getSheet(5);//carga los T-invariantes
-				columnas = paginaExcelTInv.getColumns();
-				filas = paginaExcelTInv.getRows();
-				tinvariantes = new int[filas-1][columnas];
-				for (int i = 1; i < filas-1; i++) {
-					for (int j = 0; j < columnas; j++) {
-						tinvariantes[i - 1][j] = Integer.parseInt(paginaExcelTInv.getCell(j,i).getContents());
-					}
-				}
-	
-	
-				Sheet paginaExcelPInv = archivoExcelMatrices.getSheet(6);//carga los P-invariantes
-				columnas = paginaExcelPInv.getColumns();
-				filas = paginaExcelPInv.getRows();
-				pinvariantes = new int[filas-1][columnas];
-				for (int i = 1; i < filas-1; i++) {
-					for (int j = 0; j < columnas; j++) {
-						pinvariantes[i - 1][j] = Integer.parseInt(paginaExcelPInv.getCell(j,i).getContents());
-					}
-				}
-	
-	
-	
-	
+				
+				I = myParser.getIncidencia();
+
+
+				H = myParser.getInhibicion();
+
+				M = myParser.getMarcado();
+
+				tinvariantes = myParser.getTInvariante();
+
+				pinvariantes = myParser.getPInvariante();
+
+
 				this.constante_pinvariante=gerMarcadoPinvariante(); //Obtiene el resultado de las ecuaciones del P-invariante
 				//System.out.println(constante_pinvariante.length);
+
+				this.prioridades_subida = new int[33];
 	
-	
-				Sheet paginaExcel = archivoExcelMatrices.getSheet(8);//Prioridades subida
-				columnas = paginaExcel.getColumns();
-				// filas = paginaExcel.getRows();
-				this.prioridades_subida = new int[columnas];
-	
-				for (int j = 0; j < columnas; j++) {
-					this.prioridades_subida[j] = Integer.parseInt(paginaExcel.getCell(j,1).getContents());
-				}
-	
-	
-				paginaExcel = archivoExcelMatrices.getSheet(9);//Prioridades bajada
-				columnas = paginaExcel.getColumns();
-				//filas = paginaExcel.getRows();
-				this.prioridades_bajada = new int[columnas];
-				for (int j = 0; j < columnas; j++) {
-					this.prioridades_bajada[j] = Integer.parseInt(paginaExcel.getCell(j,1).getContents());
-				}
-	
-	
-	
-	
+
+				this.prioridades_bajada = new int[33];
+
+
 	
 		} 
 		catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("Error en metodo setMatricesFromExcel");
+			System.out.println("Error en metodo setMatrices");
 
 		}
 
@@ -423,6 +362,7 @@ public class RedDePetri{
 	 * @return int[][] Vector Q. 
 	 */
 	private int[][] getVectorQ_Actualizado(){
+//		System.out.print(this.M.length);
 		int aux[][]=new int[this.M.length][1];
 		for(int i=0;i<this.M.length;i++){
 			if(M[i][0]!=0){

@@ -38,31 +38,14 @@ public class LogicaTemporal {
 	 * @param libroExcel Libro de Excel en cuya hoja 9 se encuentran los vectores que contienen los valores de alfa y beta de las transiciones.
 	 */
 	public void setVectorIntervalosFromExcel(String path){
-		 File file = new File(path);
-	     Workbook libroExcel;
-		try{
-			libroExcel = Workbook.getWorkbook(file);
-			 Sheet pagina = libroExcel.getSheet(7);
-	         int columnas = pagina.getColumns();
-	         
-	       
-	         int  filas = pagina.getRows();
-	        
-	         this.vector_de_intervalos = new int[columnas-1][filas-1];
-	         for (int i = 1; i < columnas; i++) {
-	             for (int j = 1; j < filas; j++) {
-	                 this.vector_de_intervalos[i - 1][j - 1] = Integer.parseInt(pagina.getCell(i, j).getContents());
-	             }
-	         }
-	         if((columnas-1)!=this.cantidad_de_transiciones){
-	        	 throw new IllegalStateException("Error en la cantidad de transiciones");
-	        	 
-	         }
-		}
-		catch(Exception e){
-			  e.printStackTrace();
-	          System.out.println("Error en metodo setVectorIntervalosFromExcel");
-		}
+		
+		 this.vector_de_intervalos = new int[this.cantidad_de_transiciones][2];
+		 for (int i = 0; i < this.cantidad_de_transiciones; i++) {
+		     for (int j = 0; j < 2; j++) {
+		          this.vector_de_intervalos [i][j]=0;
+		     }
+		 }
+
 		
 	}
 	
