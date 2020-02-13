@@ -650,6 +650,48 @@
             <stochasticProperties distribution="Exponential" labelVar1="Rate (λ)" labelVar2=" " var1="1.0" var2="1.0"/>
         </transition>
         <arc>
+            <type>inhibitor</type>
+            <sourceId>P35</sourceId>
+            <destinationId>T3</destinationId>
+            <multiplicity>1</multiplicity>
+            <breakPoint>
+                <x>-178</x>
+                <y>510</y>
+            </breakPoint>
+            <breakPoint>
+                <x>-176</x>
+                <y>261</y>
+            </breakPoint>
+        </arc>
+        <arc>
+            <type>inhibitor</type>
+            <sourceId>P35</sourceId>
+            <destinationId>T2</destinationId>
+            <multiplicity>1</multiplicity>
+            <breakPoint>
+                <x>-182</x>
+                <y>516</y>
+            </breakPoint>
+            <breakPoint>
+                <x>-181</x>
+                <y>61</y>
+            </breakPoint>
+        </arc>
+        <arc>
+            <type>inhibitor</type>
+            <sourceId>P35</sourceId>
+            <destinationId>T1</destinationId>
+            <multiplicity>1</multiplicity>
+            <breakPoint>
+                <x>-187</x>
+                <y>520</y>
+            </breakPoint>
+            <breakPoint>
+                <x>-185</x>
+                <y>-147</y>
+            </breakPoint>
+        </arc>
+        <arc>
             <type>regular</type>
             <sourceId>T29</sourceId>
             <destinationId>P32</destinationId>
@@ -704,10 +746,6 @@
             <sourceId>P32</sourceId>
             <destinationId>T2</destinationId>
             <multiplicity>1</multiplicity>
-            <breakPoint>
-                <x>58</x>
-                <y>277</y>
-            </breakPoint>
             <breakPoint>
                 <x>56</x>
                 <y>127</y>
