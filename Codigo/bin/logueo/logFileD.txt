@@ -1,7 +1,240 @@
 Un auto llega a la barrera de entrada 1
+Un auto llega a la barrera de entrada 1
 Un auto llega a la barrera de entrada 2
-Un auto atraviesa la barrera 1
+Un auto elige piso 1 
 Un auto llega a la barrera de entrada 3
+Un auto atraviesa la barrera 1
+Un auto va a la cola de la caja(auto piso 1)
+Un auto atraviesa la barrera 1
+Un auto elige piso 2
+Un auto llega a la barrera de entrada 1
+Un auto atraviesa la barrera 1
+Un auto elige piso 2
+Un auto llega a la barrera de entrada 1
+Un auto atraviesa la barrera 1
+Un auto elige piso 2
+Un auto llega a la barrera de entrada 1
+Un auto atraviesa la barrera 1
+Un auto elige piso 2
+Un auto llega a la barrera de entrada 1
+Un auto atraviesa la barrera 1
+Un auto elige piso 2
+Un auto llega a la barrera de entrada 1
+Un auto atraviesa la barrera 1
+Un auto elige piso 2
+Un auto llega a la barrera de entrada 1
+Un auto atraviesa la barrera 1
+Un auto elige piso 2
+Un auto llega a la barrera de entrada 1
+Un auto atraviesa la barrera 1
+Un auto elige piso 2
+Un auto llega a la barrera de entrada 1
+Un auto atraviesa la barrera 1
+Un auto elige piso 2
+Un auto llega a la barrera de entrada 1
+Un auto atraviesa la barrera 1
+Un auto elige piso 2
+Un auto llega a la barrera de entrada 1
+Un auto atraviesa la barrera 1
+Un auto elige piso 2
+Un auto llega a la barrera de entrada 1
+Un auto atraviesa la barrera 1
 Un auto elige piso 1 
 Un auto va a la cola de la caja(auto piso 1)
 Un auto llega a la barrera de entrada 1
+Un auto atraviesa la barrera 1
+Un auto elige piso 1 
+Un auto va a la cola de la caja(auto piso 1)
+Un auto llega a la barrera de entrada 1
+Un auto atraviesa la barrera 1
+Un auto elige piso 1 
+Un auto va a la cola de la caja(auto piso 1)
+Un auto llega a la barrera de entrada 1
+Un auto atraviesa la barrera 1
+Un auto elige piso 1 
+Un auto va a la cola de la caja(auto piso 1)
+Un auto llega a la barrera de entrada 1
+Un auto atraviesa la barrera 1
+Un auto elige piso 1 
+Un auto va a la cola de la caja(auto piso 1)
+Un auto llega a la barrera de entrada 1
+Un auto atraviesa la barrera 1
+Un auto elige piso 1 
+Un auto va a la cola de la caja(auto piso 1)
+Un auto llega a la barrera de entrada 1
+Un auto atraviesa la barrera 1
+Un auto elige piso 1 
+Un auto va a la cola de la caja(auto piso 1)
+Un auto llega a la barrera de entrada 1
+Un auto atraviesa la barrera 1
+Un auto elige piso 1 
+Un auto va a la cola de la caja(auto piso 1)
+Un auto llega a la barrera de entrada 1
+Un auto atraviesa la barrera 1
+Un auto elige piso 1 
+Un auto va a la cola de la caja(auto piso 1)
+Un auto llega a la barrera de entrada 1
+Un auto atraviesa la barrera 1
+Un auto elige piso 1 
+Un auto va a la cola de la caja(auto piso 1)
+Un auto llega a la barrera de entrada 1
+Un auto atraviesa la barrera 1
+Un auto elige piso 1 
+Un auto va a la cola de la caja(auto piso 1)
+Un auto llega a la barrera de entrada 1
+Un auto atraviesa la barrera 1
+Un auto elige piso 1 
+Un auto va a la cola de la caja(auto piso 1)
+Un auto llega a la barrera de entrada 1
+Un auto atraviesa la barrera 1
+Un auto elige piso 1 
+Un auto va a la cola de la caja(auto piso 1)
+Un auto llega a la barrera de entrada 1
+Un auto atraviesa la barrera 1
+Un auto elige piso 1 
+Un auto va a la cola de la caja(auto piso 1)
+Un auto llega a la barrera de entrada 1
+Un auto atraviesa la barrera 1
+Un auto elige piso 1 
+Un auto va a la cola de la caja(auto piso 1)
+Un auto llega a la barrera de entrada 1
+Un auto atraviesa la barrera 1
+Un auto elige piso 1 
+Un auto va a la cola de la caja(auto piso 1)
+Un auto llega a la barrera de entrada 1
+Un auto atraviesa la barrera 1
+Un auto elige piso 1 
+Un auto va a la cola de la caja(auto piso 1)
+Un auto llega a la barrera de entrada 1
+Un auto atraviesa la barrera 1
+Un auto elige piso 1 
+Un auto va a la cola de la caja(auto piso 1)
+Un auto llega a la barrera de entrada 1
+Un auto atraviesa la barrera 1
+Un auto elige piso 1 
+Un auto va a la cola de la caja(auto piso 1)
+Un auto llega a la barrera de entrada 1
+Un auto atraviesa la barrera 1
+Un auto elige piso 1 
+Un auto va a la cola de la caja(auto piso 1)
+Un auto llega a la barrera de entrada 1
+Un auto atraviesa la barrera 1
+Un auto elige piso 1 
+Un auto va a la cola de la caja(auto piso 1)
+Un auto llega a la barrera de entrada 1
+Un auto atraviesa la barrera 1
+Un auto elige piso 1 
+Un auto va a la cola de la caja(auto piso 1)
+Un auto llega a la barrera de entrada 1
+Un auto atraviesa la barrera 1
+Un auto elige piso 1 
+Un auto va a la cola de la caja(auto piso 1)
+Un auto llega a la barrera de entrada 1
+Un auto atraviesa la barrera 1
+Un auto elige piso 1 
+Un auto va a la cola de la caja(auto piso 1)
+Un auto llega a la barrera de entrada 1
+Un auto atraviesa la barrera 1
+Un auto elige piso 1 
+Un auto va a la cola de la caja(auto piso 1)
+Un auto llega a la barrera de entrada 1
+Un auto atraviesa la barrera 1
+Un auto elige piso 1 
+Un auto va a la cola de la caja(auto piso 1)
+Un auto llega a la barrera de entrada 1
+Un auto atraviesa la barrera 1
+Un auto elige piso 1 
+Un auto va a la cola de la caja(auto piso 1)
+Un auto llega a la barrera de entrada 1
+Un auto atraviesa la barrera 1
+Un auto elige piso 1 
+Un auto va a la cola de la caja(auto piso 1)
+Un auto llega a la barrera de entrada 1
+Un auto atraviesa la barrera 1
+Un auto elige piso 1 
+Un auto va a la cola de la caja(auto piso 1)
+Un auto llega a la barrera de entrada 1
+Un auto atraviesa la barrera 1
+Un auto elige piso 2
+Un auto llega a la barrera de entrada 1
+Un auto atraviesa la barrera 1
+Un auto elige piso 2
+Un auto llega a la barrera de entrada 1
+Un auto atraviesa la barrera 1
+Un auto elige piso 2
+Un auto llega a la barrera de entrada 1
+Un auto atraviesa la barrera 1
+Un auto elige piso 2
+Un auto atraviesa la barrera 1
+Un auto llega a la barrera de entrada 1
+Un auto elige piso 2
+Un auto llega a la barrera de entrada 1
+Un auto atraviesa la barrera 1
+Un auto llega a la barrera de entrada 1
+Un auto elige piso 2
+Un auto atraviesa la barrera 1
+Un auto llega a la barrera de entrada 1
+Un auto elige piso 2
+Un auto atraviesa la barrera 1
+Un auto llega a la barrera de entrada 1
+Un auto elige piso 2
+Un auto atraviesa la barrera 1
+Un auto llega a la barrera de entrada 1
+Un auto elige piso 2
+Un auto atraviesa la barrera 1
+Un auto llega a la barrera de entrada 1
+Un auto elige piso 2
+Un auto atraviesa la barrera 1
+Un auto llega a la barrera de entrada 1
+Un auto elige piso 2
+Un auto atraviesa la barrera 1
+Un auto llega a la barrera de entrada 1
+Un auto elige piso 2
+Un auto atraviesa la barrera 1
+Un auto llega a la barrera de entrada 1
+Un auto elige piso 2
+Un auto atraviesa la barrera 1
+Un auto llega a la barrera de entrada 1
+Un auto elige piso 2
+Un auto atraviesa la barrera 1
+Un auto llega a la barrera de entrada 1
+Un auto elige piso 2
+Un auto atraviesa la barrera 1
+Un auto llega a la barrera de entrada 1
+Un auto elige piso 2
+Prender cartel "No Hay Lugar"
+Un auto atraviesa la barrera 1
+Un auto elige piso 2
+Un auto baja la rampa
+Un auto llega a la barrera de entrada 1
+Un auto llega a la barrera de entrada 3
+Un auto llega a la barrera de entrada 2
+Un auto elige piso 1 
+Un auto llega a la barrera de la salida 1
+Un auto va a la cola de la caja(auto piso 2)
+Un auto llega a la barrera de la salida 2
+Un auto sale de la caja(auto piso 2)
+Un auto paga (auto piso 2)
+Un auto elige salida 1 (auto piso 1)
+Un auto estaciona en el piso 2
+Un auto elige salida 2 (auto piso 1)
+Un auto va a la cola de la caja(auto piso 1)
+Un auto sale por salida 1
+Un auto elige salida 2 (auto piso 2)
+Un auto desocupo la rampa
+Un auto atraviesa la barrera 1
+Un auto en la calle
+Un auto elige piso 2
+Prender cartel "No Hay Lugar"
+Un auto salio por salida 2
+Un auto salio por salida 2
+Un auto llega a la barrera de entrada 1
+Un auto elige salida 1 (auto piso 2)
+Un auto sube la rampa
+Un auto atraviesa la barrera 2
+Un auto paga (auto piso 1)
+Un auto sale de la caja(auto piso 1)
+Un auto sale de la caja(auto piso 1)
+Un auto atraviesa la barrera 3
+Finalizo la ejecucion del simulador Tren Concurrente 2017 en: 0,583333 minutos.
+Quedaron 0 tareas por finalizar.

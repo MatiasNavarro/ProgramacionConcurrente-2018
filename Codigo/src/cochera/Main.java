@@ -6,8 +6,8 @@ import java.io.PrintStream;
 import java.util.HashMap;
 import java.io.IOException;  // Import the IOException class to handle errors
 /*
- Trabajo Practico Integrador Programacion Concurrente 2017. (Ferrocarril).
- Autores: Casabella Martin, Kleiner Matias, Lopez Gaston.
+ Trabajo Practico Integrador Programacion Concurrente 2018. (Estacionamiento).
+ Autores: Cavanagh juan; Fissore Lorenzo; Funes Joaquin; Navarro Matias.
  */
 
 
@@ -118,24 +118,24 @@ public class Main {
 		executor.execute(new FireSingleTransition(11,monitor, acciones.get(11)));  // "Estacion D","Vagon"
 		
 		//Inicio pasajeros bajando al tren/vagon - 8 hilos
-		executor.execute(new FireSingleTransition(29,monitor, acciones.get(29)));	 // "Estacion A","Maquina"
-		executor.execute(new FireSingleTransition(31,monitor, acciones.get(31)));  // "Estacion A","Vagon"
-		executor.execute(new FireSingleTransition(32,monitor, acciones.get(32)));  // "Estacion B","Maquina"
-		executor.execute(new FireSingleTransition(33,monitor, acciones.get(33)));  // "Estacion B","Vagon"
-		executor.execute(new FireSingleTransition(25,monitor, acciones.get(25)));  // "Estacion C","Maquina"
+//		executor.execute(new FireSingleTransition(29,monitor, acciones.get(29)));	 // "Estacion A","Maquina"
+//		executor.execute(new FireSingleTransition(31,monitor, acciones.get(31)));  // "Estacion A","Vagon"
+//		executor.execute(new FireSingleTransition(32,monitor, acciones.get(32)));  // "Estacion B","Maquina"
+//		executor.execute(new FireSingleTransition(33,monitor, acciones.get(33)));  // "Estacion B","Vagon"
+//		executor.execute(new FireSingleTransition(25,monitor, acciones.get(25)));  // "Estacion C","Maquina"
 		executor.execute(new FireSingleTransition(26,monitor, acciones.get(26)));  // "Estacion C","Vagon"
 		executor.execute(new FireSingleTransition(27,monitor, acciones.get(27)));  // "Estacion D","Maquina"
 		executor.execute(new FireSingleTransition(28,monitor, acciones.get(28)));  // "Estacion D","Vagon"
 
 		//Inicio tren driver - 1 hilos
 		int[] transiciones_tren=new int[14];
-		transiciones_tren[0]=36; //temporal
-		transiciones_tren[1]=35;
-		transiciones_tren[2]=34; //temporal
+//		transiciones_tren[0]=36; //temporal
+//		transiciones_tren[1]=35;
+//		transiciones_tren[2]=34; //temporal
 		transiciones_tren[3]=18;
 		transiciones_tren[4]=21; //temporal
 		transiciones_tren[5]=21; //temporal
-		transiciones_tren[6]=30;
+//		transiciones_tren[6]=30;
 		transiciones_tren[7]=19; //temporal
 		transiciones_tren[8]=8;
 		transiciones_tren[9]=4; //temporal
