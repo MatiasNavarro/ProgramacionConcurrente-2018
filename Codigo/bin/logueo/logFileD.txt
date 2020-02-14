@@ -1,0 +1,7 @@
+Un auto llega a la barrera de entrada 1
+Un auto llega a la barrera de entrada 2
+Un auto atraviesa la barrera 1
+Un auto llega a la barrera de entrada 3
+Un auto elige piso 1 
+Un auto va a la cola de la caja(auto piso 1)
+Un auto llega a la barrera de entrada 1

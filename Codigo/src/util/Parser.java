@@ -16,9 +16,10 @@ public class Parser {
 	private Elements tableRowElements;
 	private Elements tableRowElementsInv;
 	private HashMap<String, int[][]> ldatos = new HashMap<>();
-	private String ubicacion = "/home/lfiss/Documents/ProgramacionConcurrente-2018/Nestro/Codigo/src/Red/Matrices.html";
-	private String ubicacionInv = "/home/lfiss/Documents/ProgramacionConcurrente-2018/Nestro/Codigo/src/Red/invariantes.html";
-//	public static void main(String[] args){
+	private String ubicacion = "./src/util/Red/Matrices.html";
+	private String ubicacionInv = "./src/util/Red/invariantes.html";
+	
+	//	public static void main(String[] args){
 //		Parser myParser = new Parser();
 ////		System.out.println(myParser.leerRed().toString());
 //		myParser.leerRed();

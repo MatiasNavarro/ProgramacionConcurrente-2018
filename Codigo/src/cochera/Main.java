@@ -201,35 +201,35 @@ public class Main {
 	
 	
 	public static void writeDictionary(HashMap<Integer,String> diccionario) {
-		diccionario.put(0,"Un auto llega a la barrera de entrada 1");//T1
-		diccionario.put(1,"Un auto llega a la barrera de entrada 2");//T2
-		diccionario.put(2,"Un auto llega a la barrera de entrada 3");//T3
-		diccionario.put(3,"Un auto atraviesa la barrera 1");//T4
-		diccionario.put(4,"Un auto atraviesa la barrera 2");//T5
-		diccionario.put(5,"Un auto atraviesa la barrera 3");//T6
-		diccionario.put(6,"Un auto elige piso 2");//T8
-		diccionario.put(7,"Un auto elige piso 1 ");//T11
-		diccionario.put(8,"Un auto sube la rampa");//T16
-		diccionario.put(9,"Un auto estaciona en el piso 2");//T17
-		diccionario.put(10,"Un auto baja la rampa");//T18
-		diccionario.put(11,"Un auto desocupo la rampa");//T19
-		diccionario.put(12,"Un auto paga (auto piso 2)");//T20
-		diccionario.put(13,"Un auto va a la cola de la caja(auto piso 1)");//T21
-		diccionario.put(14,"Un auto paga (auto piso 1)");//T22
-		diccionario.put(15,"Un auto sale de la caja(auto piso 2)");//T23
-		diccionario.put(16,"Un auto sale de la caja(auto piso 1)");//T24
-		diccionario.put(17,"Un auto elige salida 2 (auto piso 2)");//T25
-		diccionario.put(18,"Un auto elige salida 2 (auto piso 1)");//T26
-		diccionario.put(19,"Un auto elige salida 1 (auto piso 2)");//T27
-		diccionario.put(20,"Un auto elige salida 1 (auto piso 1)");//T28
-		diccionario.put(21,"Un auto salio por salida 2");//T29
-		diccionario.put(22,"Un auto sale por salida 1");//T30
-		diccionario.put(23,"Un auto en la calle");//T31
-		diccionario.put(24,"Prender cartel \"No Hay Lugar\"");//T32
-		diccionario.put(25,"Apagar cartel");//T33
-		diccionario.put(26,"Un auto va a la cola de la caja(auto piso 2)");//T35
-		diccionario.put(27,"Un auto llega a la barrera de la salida 1");//T36
-		diccionario.put(28,"Un auto llega a la barrera de la salida 2");//T41
+		diccionario.put(0,"Un auto llega a la barrera de entrada 1");		//T1
+		diccionario.put(1,"Un auto llega a la barrera de entrada 2");		//T2
+		diccionario.put(2,"Un auto llega a la barrera de entrada 3");		//T3
+		diccionario.put(3,"Un auto atraviesa la barrera 1");				//T4
+		diccionario.put(4,"Un auto atraviesa la barrera 2");				//T5
+		diccionario.put(5,"Un auto atraviesa la barrera 3");				//T6
+		diccionario.put(6,"Un auto elige piso 2");							//T8
+		diccionario.put(7,"Un auto elige piso 1 ");							//T11
+		diccionario.put(8,"Un auto sube la rampa");							//T16
+		diccionario.put(9,"Un auto estaciona en el piso 2");				//T17
+		diccionario.put(10,"Un auto baja la rampa");						//T18
+		diccionario.put(11,"Un auto desocupo la rampa");					//T19
+		diccionario.put(12,"Un auto paga (auto piso 2)");					//T20
+		diccionario.put(13,"Un auto va a la cola de la caja(auto piso 1)");	//T21
+		diccionario.put(14,"Un auto paga (auto piso 1)");					//T22
+		diccionario.put(15,"Un auto sale de la caja(auto piso 2)");			//T23
+		diccionario.put(16,"Un auto sale de la caja(auto piso 1)");			//T24
+		diccionario.put(17,"Un auto elige salida 2 (auto piso 2)");			//T25
+		diccionario.put(18,"Un auto elige salida 2 (auto piso 1)");			//T26
+		diccionario.put(19,"Un auto elige salida 1 (auto piso 2)");			//T27
+		diccionario.put(20,"Un auto elige salida 1 (auto piso 1)");			//T28
+		diccionario.put(21,"Un auto salio por salida 2");					//T29
+		diccionario.put(22,"Un auto sale por salida 1");					//T30
+		diccionario.put(23,"Un auto en la calle");							//T31
+		diccionario.put(24,"Prender cartel \"No Hay Lugar\"");				//T32
+		diccionario.put(25,"Apagar cartel");								//T33
+		diccionario.put(26,"Un auto va a la cola de la caja(auto piso 2)");	//T35
+		diccionario.put(27,"Un auto llega a la barrera de la salida 1");	//T36
+		diccionario.put(28,"Un auto llega a la barrera de la salida 2");	//T41
 
 	}
 	
