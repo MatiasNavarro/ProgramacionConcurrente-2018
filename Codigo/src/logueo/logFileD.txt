@@ -1,0 +1,7 @@
+Nueva persona en estacion A
+Nueva persona en estacion C
+Nueva persona en estacion D
+Nueva persona en estacion B
+Nueva persona en estacion A
+Pasajero subio al vagon en estacion A
+Pasajero subio al vagon en estacion B
