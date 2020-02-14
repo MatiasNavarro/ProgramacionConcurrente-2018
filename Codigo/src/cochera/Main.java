@@ -28,14 +28,14 @@ public class Main {
 	private static final int NUMBER_OF_THREADS=26;
 	private static final int EXECUTION_TIME=35;
 	private static final TimeUnit TIME_UNIT=TimeUnit.SECONDS;
-	private static final boolean FLAG_TEST_PRIORITIES=true;
+	private static final boolean FLAG_TEST_PRIORITIES=false;
 	/*
 	 * La politica puede ser:
 	 *	0: aleatoria.
 	 *	1: primero los que suben.
 	 *	2: primero los que bajan.
 	*/
-	private static final int POLITIC=1;
+	private static final int POLITIC=0;
 	
 	public static void main(String[] args) throws InterruptedException {
 		
@@ -201,43 +201,36 @@ public class Main {
 	
 	
 	public static void writeDictionary(HashMap<Integer,String> diccionario) {
-		diccionario.put(0,"Nueva persona en estacion A");
-		diccionario.put(1,"Nueva persona en estacion B");
-		diccionario.put(2,"Nueva persona en estacion C");
-		diccionario.put(3,"Nueva persona en estacion D");
-		diccionario.put(4,"El tren partio de la estacion A");
-		diccionario.put(5,"El tren llego a la estacion B");
-		diccionario.put(6,"Pasajero subio a la maquina en estacion D");
-		diccionario.put(7,"Pasajero subio al vagon en estacion A");
-		diccionario.put(8,"El tren llego a la estacion A");
-		diccionario.put(9,"Pasajero subio a la maquina en estacion B");
-		diccionario.put(10,"Pasajero subio a la maquina en estacion A");
-		diccionario.put(11,"Pasajero subio al vagon en estacion D");
-		diccionario.put(12,"Pasajero subio al vagon en estacion C");
-		diccionario.put(13,"Pasajero subio al vagon en estacion B");
-		diccionario.put(14,"--TREN A 30 METROS DE LA BARRERA A-B--");
-		diccionario.put(15,"Nuevo auto queriendo cruzar la barrera en A-B");
-		diccionario.put(16,"--EL TREN SE ALEJO 20 METROS DE LA BARRERA A-B--");
-		diccionario.put(17,"Cruza un auto en barrera A-B");
-		diccionario.put(18,"--TREN A 30 METROS DE LA BARRERA C-D--");
-		diccionario.put(19,"El tren partio de la estacion D");
-		diccionario.put(20,"Nuevo auto queriendo cruzar la barrera en C-D");
-		diccionario.put(21,"--EL TREN SE ALEJO 20 METROS DE LA BARRERA C-D--");
-		diccionario.put(22,"Cruza un auto en barrera C-D");
-		diccionario.put(23,"Pasajero subio a la maquina en estacion C");
-		diccionario.put(24,"Autorizacion de bajada de pasajero");
-		diccionario.put(25,"Pasajero se baja de la maquina en estacion C");
-		diccionario.put(26,"Pasajero se baja del vagon en estacion C");
-		diccionario.put(27,"Pasajero se baja de la maquina en estacion D");
-		diccionario.put(28,"Pasajero se baja del vagon en estacion D");
-		diccionario.put(29,"Pasajero se baja de la maquina en estacion A");
-		diccionario.put(30,"El tren llego a la estacion D");
-		diccionario.put(31,"Pasajero se baja del vagon en estacion A");
-		diccionario.put(32,"Pasajero se baja de la maquina en estacion B");
-		diccionario.put(33,"Pasajero se baja del vagon en estacion B");
-		diccionario.put(34,"El tren partio de la estacion C");
-		diccionario.put(35,"El tren llego a la estacion C");
-		diccionario.put(36,"El tren partio de la estacion B");
+		diccionario.put(0,"Un auto llega a la barrera de entrada 1");//T1
+		diccionario.put(1,"Un auto llega a la barrera de entrada 2");//T2
+		diccionario.put(2,"Un auto llega a la barrera de entrada 3");//T3
+		diccionario.put(3,"Un auto atraviesa la barrera 1");//T4
+		diccionario.put(4,"Un auto atraviesa la barrera 2");//T5
+		diccionario.put(5,"Un auto atraviesa la barrera 3");//T6
+		diccionario.put(6,"Un auto elige piso 2");//T8
+		diccionario.put(7,"Un auto elige piso 1 ");//T11
+		diccionario.put(8,"Un auto sube la rampa");//T16
+		diccionario.put(9,"Un auto estaciona en el piso 2");//T17
+		diccionario.put(10,"Un auto baja la rampa");//T18
+		diccionario.put(11,"Un auto desocupo la rampa");//T19
+		diccionario.put(12,"Un auto paga (auto piso 2)");//T20
+		diccionario.put(13,"Un auto va a la cola de la caja(auto piso 1)");//T21
+		diccionario.put(14,"Un auto paga (auto piso 1)");//T22
+		diccionario.put(15,"Un auto sale de la caja(auto piso 2)");//T23
+		diccionario.put(16,"Un auto sale de la caja(auto piso 1)");//T24
+		diccionario.put(17,"Un auto elige salida 2 (auto piso 2)");//T25
+		diccionario.put(18,"Un auto elige salida 2 (auto piso 1)");//T26
+		diccionario.put(19,"Un auto elige salida 1 (auto piso 2)");//T27
+		diccionario.put(20,"Un auto elige salida 1 (auto piso 1)");//T28
+		diccionario.put(21,"Un auto salio por salida 2");//T29
+		diccionario.put(22,"Un auto sale por salida 1");//T30
+		diccionario.put(23,"Un auto en la calle");//T31
+		diccionario.put(24,"Prender cartel \"No Hay Lugar\"");//T32
+		diccionario.put(25,"Apagar cartel");//T33
+		diccionario.put(26,"Un auto va a la cola de la caja(auto piso 2)");//T35
+		diccionario.put(27,"Un auto llega a la barrera de la salida 1");//T36
+		diccionario.put(28,"Un auto llega a la barrera de la salida 2");//T41
+
 	}
 	
 	public static void setPath(String name_fil,String name_file_consol,boolean flag_prioridad) {

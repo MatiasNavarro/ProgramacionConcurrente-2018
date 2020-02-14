@@ -1,7 +1,7 @@
-Nueva persona en estacion A
-Nueva persona en estacion C
-Nueva persona en estacion D
-Nueva persona en estacion B
-Nueva persona en estacion A
-Pasajero subio al vagon en estacion A
-Pasajero subio al vagon en estacion B
+Un auto llega a la barrera de entrada 1
+Un auto llega a la barrera de entrada 2
+Un auto llega a la barrera de entrada 3
+Un auto atraviesa la barrera 1
+Un auto llega a la barrera de entrada 1
+Un auto elige piso 1 
+Un auto va a la cola de la caja(auto piso 1)

@@ -170,12 +170,12 @@ public class Parser {
 		if(tag=="Pinvariante" || tag=="Tinvariante") {
 			fila =(datos.length-columna)/columna;
 		}
-
-		System.out.printf("%n");
-		System.out.print(fila);	
-		System.out.printf("%n");
-		System.out.print(columna);
-		System.out.printf("%n");
+//
+//		System.out.printf("%n");
+//		System.out.print(fila);	
+//		System.out.printf("%n");
+//		System.out.print(columna);
+//		System.out.printf("%n");
 		
 		int[][] matriz;
 		if(tag=="Marcado")
@@ -186,10 +186,10 @@ public class Parser {
 
 			for(int i = 0; i<datos.length-columna; i++) {
 				datos[i] = datos[i+columna];
-				System.out.print(datos[i]);
+//				System.out.print(datos[i]);
 			}
 
-			System.out.println("");
+//			System.out.println("");
 
 		for (int i = 0; i < fila; i++) 
 		{
@@ -215,18 +215,22 @@ public class Parser {
 						
 			}
 		}
-//		for (int i=0;i<fila;i++) {
-//			for (int j = 0; j<columna;j++) {
-//				System.out.print(matriz[i][j]);
-//				if(matriz[i][j]<0) {
-//					System.out.print(" ");
-//				}
-//				else {
-//					System.out.print("  ");
-//				}
-//			}
-//			System.out.printf("%n");
-//		}
+		
+		if(tag!="Marcado") {
+			for (int i=0;i<fila;i++) {
+				for (int j = 0; j<columna;j++) {
+					System.out.print(matriz[i][j]);
+					if(matriz[i][j]<0) {
+						System.out.print(" ");
+					}
+					else {
+						System.out.print("  ");
+					}
+				}
+				System.out.printf("%n");
+			}
+		}
+
 		System.out.printf("%n");
 		ldatos.put(tag, matriz);
 	}
