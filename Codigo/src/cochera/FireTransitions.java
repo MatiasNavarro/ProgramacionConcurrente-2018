@@ -4,7 +4,7 @@ import acciones.Accion;
 import monitor.Monitor;
 
 
-public class FireMultipleTransition implements Runnable {
+public class FireTransitions implements Runnable {
     private int[] transitions_to_fire;
     private Monitor monitor;
     private Accion[] acciones;
@@ -15,7 +15,7 @@ public class FireMultipleTransition implements Runnable {
  * @param transiciones_viaje arreglo de enteros que representan las transiciones que disparara el hilo  (viajes en el tren)
  * @param monitor
  */
-    public FireMultipleTransition(
+    public FireTransitions(
     		int[] transiciones_viaje, 
     		Monitor monitor,
     		Accion[] acciones

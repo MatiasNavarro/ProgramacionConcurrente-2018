@@ -86,55 +86,52 @@ public class Main {
 		
 		//Inicio tren driver - 1 hilos
 
-		
-		Accion[] acciones_tren=new Accion[14];
-		for(int j=0; j<transiciones_tren.length;j++){
-			acciones_tren[j]=acciones.get(transiciones_tren[j]);
-		}
+//		
+//		Accion[] acciones_tren=new Accion[14];
+//		for(int j=0; j<transiciones_tren.length;j++){
+//			acciones_tren[j]=acciones.get(transiciones_tren[j]);
+//		}
 
 		
 		//Inicio Barreras (generadores de tokens) - 6 hilos
-		executor.execute(new FireMultipleTransition(transiciones_Barrera1, monitor, acciones.get(0)));
-		executor.execute(new FireSingleTransition(1,monitor, acciones.get(1)));
-		executor.execute(new FireSingleTransition(2,monitor, acciones.get(2)));
+		executor.execute(new FireTransitions(data.get_t_BarreraE1(), monitor, data.get_a_BarreraE1()));
+		executor.execute(new FireTransitions(data.get_t_BarreraE2(), monitor, data.get_a_BarreraE2()));
+		executor.execute(new FireTransitions(data.get_t_BarreraE3(), monitor, data.get_a_BarreraE3()));
 		
+		//Inicio Eleccion de piso
+		executor.execute(new FireTransitions(data.get_t_EleccionP1(),monitor, data.get_a_EleccionP1()));
+		executor.execute(new FireTransitions(data.get_t_EleccionP2(),monitor, data.get_a_EleccionP2()));
 		
-		executor.execute(new FireSingleTransition(3,monitor, acciones.get(3)));
-		executor.execute(new FireSingleTransition(15,monitor, acciones.get(15)));
-		executor.execute(new FireSingleTransition(20,monitor, acciones.get(20)));
-		
-		//Inicio control de bajada - 1 hilos
-		executor.execute(new FireSingleTransition(24,monitor, acciones.get(24)));
-		
-		//Inicio circulacion de autos por barrera - 2 hilos
-		executor.execute(new FireSingleTransition(22,monitor, acciones.get(22)));
-		executor.execute(new FireSingleTransition(17,monitor, acciones.get(17)));
-		
-		//Inicio pasajeros subiendo al tren/vagon - 8 hilos
-		executor.execute(new FireSingleTransition(10,monitor, acciones.get(10)));  // "Estacion A","Maquina"
-		executor.execute(new FireSingleTransition(7,monitor, acciones.get(7)));	 // "Estacion A","Vagon"
-		executor.execute(new FireSingleTransition(9,monitor, acciones.get(9)));	 // "Estacion B","Maquina"
-		executor.execute(new FireSingleTransition(13,monitor, acciones.get(13)));	 // "Estacion B","Vagon"
-		executor.execute(new FireSingleTransition(23,monitor, acciones.get(23)));  // "Estacion C","Maquina"
-		executor.execute(new FireSingleTransition(12,monitor, acciones.get(12)));  // "Estacion C","Vagon"
-		executor.execute(new FireSingleTransition(6,monitor, acciones.get(6)));   // "Estacion D","Maquina"
-		executor.execute(new FireSingleTransition(11,monitor, acciones.get(11)));  // "Estacion D","Vagon"
-		
-		//Inicio pasajeros bajando al tren/vagon - 8 hilos
-		executor.execute(new FireSingleTransition(29,monitor, acciones.get(29)));	 // "Estacion A","Maquina"
-		executor.execute(new FireSingleTransition(31,monitor, acciones.get(31)));  // "Estacion A","Vagon"
-		executor.execute(new FireSingleTransition(32,monitor, acciones.get(32)));  // "Estacion B","Maquina"
-		executor.execute(new FireSingleTransition(33,monitor, acciones.get(33)));  // "Estacion B","Vagon"
-		executor.execute(new FireSingleTransition(25,monitor, acciones.get(25)));  // "Estacion C","Maquina"
-		executor.execute(new FireSingleTransition(26,monitor, acciones.get(26)));  // "Estacion C","Vagon"
-		executor.execute(new FireSingleTransition(27,monitor, acciones.get(27)));  // "Estacion D","Maquina"
-		executor.execute(new FireSingleTransition(28,monitor, acciones.get(28)));  // "Estacion D","Vagon"
+		//Inicio Rampa-Piso2
+		executor.execute(new FireTransitions(data.get_t_Bajada(),monitor, data.get_a_Bajada()));
+		executor.execute(new FireTransitions(data.get_t_Subida(),monitor, data.get_a_Subida()));		
 
 
 		
+		//Camino a la caja por piso - 2 hilos
+		executor.execute(new FireTransitions(data.get_t_IrACaja1(),monitor, data.get_a_IrAcaja1()));
+		executor.execute(new FireTransitions(data.get_t_IrACaja2(),monitor, data.get_a_IrACaja2()));
 		
+		//Caja - 2 hilos
+		executor.execute(new FireTransitions(data.get_t_CobrarPiso1(),monitor, data.get_a_CobrarPiso1()));  
+		executor.execute(new FireTransitions(data.get_t_CobrarPiso2(),monitor, data.get_a_CobrarPiso2()));	
+		
+		
+		//Eleccion de salida - 2 hilos
+		executor.execute(new FireTransitions(data.get_t_EleccionS1(),monitor, data.get_a_EleccionS1()));	 
+		executor.execute(new FireTransitions(data.get_t_EleccionS2(),monitor, data.get_a_EleccionS2()));
+		
+		//Barreras Salida - 2 hilos
+		executor.execute(new FireTransitions(data.get_t_BarreraS1(),monitor, data.get_a_BarreraS1()));	
+		executor.execute(new FireTransitions(data.get_t_BarreraS2(),monitor, data.get_a_BarreraS2()));	  
+		
+		//Calle - 1 Hilo
+		executor.execute(new FireTransitions(data.get_t_Calle(),monitor, data.get_a_Calle()));
+		
+		//Cartel - 1 Hilo
+		executor.execute(new FireTransitions(data.get_t_Cartel(),monitor, data.get_a_Cartel()));  
 
-		executor.execute(new FireMultipleTransition(transiciones_tren,monitor, acciones_tren));
+
 		
         executor.shutdown();// no se van a aceptar mas tareas, pero espera finalizarse las que se encuentran en ejecucion    
 		
@@ -170,8 +167,8 @@ public class Main {
         /*
          * Fin del programa
          */
-        fileStream.format("Finalizo la ejecucion del simulador Tren Concurrente 2017 en: %f minutos.",(double)tiempo_transcurrido.getSeconds()/(double)60);
-        System.out.format("Finalizo la ejecucion del simulador Tren Concurrente 2017 en: %f minutos.",(double)tiempo_transcurrido.getSeconds()/(double)60);
+        fileStream.format("Finalizo la ejecucion del simulador en: %f minutos.",(double)tiempo_transcurrido.getSeconds()/(double)60);
+        System.out.format("Finalizo la ejecucion del simulador en: %f minutos.",(double)tiempo_transcurrido.getSeconds()/(double)60);
         
         fileStream.format("\nQuedaron %d tareas por finalizar.",executor.getActiveCount());
         System.out.format("\nQuedaron %d tareas por finalizar.",executor.getActiveCount());
