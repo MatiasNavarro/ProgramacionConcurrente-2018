@@ -7,26 +7,27 @@ import java.io.PrintStream;
 import java.util.HashMap;
 
 public class ThreadData{
-	private static  HashMap<Integer,String> diccionario;
 	private static int[] t_BarreraE1, t_BarreraE2, t_BarreraE3, t_EleccionP1, t_EleccionP2, t_Bajada, t_Subida, t_IrACaja1, t_IrACaja2, t_CobrarPiso1, t_CobrarPiso2, t_EleccionS1, t_EleccionS2, t_BarreraS2, t_BarreraS1, t_Calle, t_Cartel    ;
 	private static Accion[] a_BarreraE1, a_BarreraE2, a_BarreraE3, a_EleccionP1, a_EleccionP2, a_Bajada, a_Subida, a_IrACaja1, a_IrACaja2, a_CobrarPiso1, a_CobrarPiso2, a_EleccionS1, a_EleccionS2, a_BarreraS2, a_BarreraS1, a_Calle, a_Cartel    ;
 
 
 	public ThreadData(PrintStream fileStream) {
-
+		
+		//Creacion del diccionario
+		HashMap<Integer,String> diccionario = new HashMap<Integer,String>();
+		writeDictionary(diccionario);
+		
 		//Acciones.
 		HashMap<Integer,Accion> acciones=new HashMap<Integer,Accion>();
 		for(int transicion=0; transicion<29;transicion++){
 			acciones.put(transicion, new ConsolePrinter(diccionario.get(transicion),fileStream));
 		}
 		setTransiciones();
-
+		setAcciones(acciones);
+		
 	}
 
-
-
-
-	public static void writeDictionary() {
+	public static void writeDictionary(HashMap<Integer,String> diccionario) {
 		diccionario.put(0,"Un auto llega a la barrera de entrada 1");//T1
 		diccionario.put(1,"Un auto llega a la barrera de entrada 2");//T2
 		diccionario.put(2,"Un auto llega a la barrera de entrada 3");//T3
@@ -61,83 +62,83 @@ public class ThreadData{
 
 	public static void setTransiciones() {
 		t_BarreraE1=new int[2];
-		t_BarreraE1[0]=0; //temporal
+		t_BarreraE1[0]=0;
 		t_BarreraE1[1]=3;
 
 		t_BarreraE2=new int[2];
-		t_BarreraE2[0]=1; //temporal
+		t_BarreraE2[0]=1;
 		t_BarreraE2[1]=4;
 
 		t_BarreraE3=new int[2];
-		t_BarreraE3[0]=2; //temporal
+		t_BarreraE3[0]=2;
 		t_BarreraE3[1]=5;
 
 		t_EleccionP1=new int[1];
-		t_EleccionP1[0]=0;
+		t_EleccionP1[0]=7;
 
 		t_EleccionP2=new int[1];
-		t_EleccionP2[0]=0; //temporal
+		t_EleccionP2[0]=6;
 
 
 		t_Bajada=new int[2];
-		t_Bajada[0]=0; //temporal
-		t_Bajada[1]=3;
+		t_Bajada[0]=10;
+		t_Bajada[1]=11;
 
 		t_Subida=new int[2];
-		t_Subida[0]=0; //temporal
-		t_Subida[1]=3;
+		t_Subida[0]=8;
+		t_Subida[1]=9;
 
 		t_IrACaja1=new int[1];
-		t_IrACaja1[0]=0; //temporal
+		t_IrACaja1[0]=13;
 
 
 		t_IrACaja2=new int[1];
-		t_IrACaja2[0]=0; //temporal
+		t_IrACaja2[0]=26;
 
 
 		t_CobrarPiso1=new int[2];
-		t_CobrarPiso1[0]=0; //temporal
-		t_CobrarPiso1[1]=3;
+		t_CobrarPiso1[0]=14;
+		t_CobrarPiso1[1]=16;
 
 		t_CobrarPiso2=new int[2];
-		t_CobrarPiso2[0]=0; //temporal
-		t_CobrarPiso2[1]=3;
+		t_CobrarPiso2[0]=12;
+		t_CobrarPiso2[1]=15;
 
 		t_EleccionS1=new int[2];
-		t_EleccionS1[0]=0; //temporal
-		t_EleccionS1[1]=3;
+		t_EleccionS1[0]=19; 
+		t_EleccionS1[1]=20;
 
 		t_EleccionS2=new int[2];
-		t_EleccionS2[0]=0; //temporal
-		t_EleccionS2[1]=3;
+		t_EleccionS2[0]=17;
+		t_EleccionS2[1]=18;
 
 		t_BarreraS2=new int[2];
-		t_BarreraS2[0]=0; //temporal
-		t_BarreraS2[1]=3;
+		t_BarreraS2[0]=28;
+		t_BarreraS2[1]=21;
 
 		t_BarreraS1=new int[2];
-		t_BarreraS1[0]=0; //temporal
-		t_BarreraS1[1]=3;
+		t_BarreraS1[0]=27;
+		t_BarreraS1[1]=22;
 
 		t_Calle=new int[1];
-		t_Calle[0]=0; //temporal
+		t_Calle[0]=23;
 
 
 		t_Cartel=new int[2];
-		t_Cartel[0]=0; //temporal
-		t_Cartel[1]=3;
+		t_Cartel[0]=24;
+		t_Cartel[1]=25;
 	}
 	public static void setAcciones(HashMap<Integer,Accion> acciones) {
 		a_BarreraE1=new Accion[2];
-		a_BarreraE1[0]=acciones.get(t_BarreraE1[0]); //temporal
+		a_BarreraE1[0]=acciones.get(t_BarreraE1[0]);  
 		a_BarreraE1[1]=acciones.get(t_BarreraE1[1]);
 
 		a_BarreraE2=new Accion[2];
-		a_BarreraE2[0]=acciones.get(t_BarreraE2[0]); //temporal
+		a_BarreraE2[0]=acciones.get(t_BarreraE2[0]);  
 		a_BarreraE2[1]=acciones.get(t_BarreraE2[1]);
 
 		a_BarreraE3=new Accion[2];
-		a_BarreraE3[0]=acciones.get(t_BarreraE3[0]); //temporal
+		a_BarreraE3[0]=acciones.get(t_BarreraE3[0]);  
 		a_BarreraE3[1]=acciones.get(t_BarreraE3[1]);
 
 
@@ -149,54 +150,54 @@ public class ThreadData{
 
 
 		a_Bajada=new Accion[2];
-		a_Bajada[0]=acciones.get(t_Bajada[0]); //temporal
+		a_Bajada[0]=acciones.get(t_Bajada[0]);  
 		a_Bajada[1]=acciones.get(t_Bajada[1]);
 
 		a_Subida=new Accion[2];
-		a_Subida[0]=acciones.get(t_Subida[0]); //temporal
+		a_Subida[0]=acciones.get(t_Subida[0]);  
 		a_Subida[1]=acciones.get(t_Subida[1]);
 
 
 		a_IrACaja1=new Accion[1];
-		a_IrACaja1[0]=acciones.get(t_IrACaja1[0]); //temporal
+		a_IrACaja1[0]=acciones.get(t_IrACaja1[0]);  
 
 		a_IrACaja2=new Accion[1];
-		a_IrACaja2[0]=acciones.get(t_IrACaja2[0]); //temporal
+		a_IrACaja2[0]=acciones.get(t_IrACaja2[0]);  
 
 
 		a_CobrarPiso1=new Accion[2];
-		a_CobrarPiso1[0]=acciones.get(t_CobrarPiso1[0]); //temporal
+		a_CobrarPiso1[0]=acciones.get(t_CobrarPiso1[0]);  
 		a_CobrarPiso1[1]=acciones.get(t_CobrarPiso1[1]);
 
 		a_CobrarPiso2=new Accion[2];
-		a_CobrarPiso2[0]=acciones.get(t_CobrarPiso2[0]); //temporal
+		a_CobrarPiso2[0]=acciones.get(t_CobrarPiso2[0]);  
 		a_CobrarPiso2[1]=acciones.get(t_CobrarPiso2[1]);
 
 
 		a_EleccionS1=new Accion[2];
-		a_EleccionS1[0]=acciones.get(t_EleccionS1[0]); //temporal
+		a_EleccionS1[0]=acciones.get(t_EleccionS1[0]);  
 		a_EleccionS1[1]=acciones.get(t_EleccionS1[1]);
 
 		a_EleccionS2=new Accion[2];
-		a_EleccionS2[0]=acciones.get(t_EleccionS2[0]); //temporal
+		a_EleccionS2[0]=acciones.get(t_EleccionS2[0]);  
 		a_EleccionS2[1]=acciones.get(t_EleccionS2[1]);
 
 
 		a_BarreraS2=new Accion[2];
-		a_BarreraS2[0]=acciones.get(t_BarreraS2[0]); //temporal
+		a_BarreraS2[0]=acciones.get(t_BarreraS2[0]);  
 		a_BarreraS2[1]=acciones.get(t_BarreraS2[1]);
 
 		a_BarreraS1=new Accion[2];
-		a_BarreraS1[0]=acciones.get(t_BarreraS1[0]); //temporal
+		a_BarreraS1[0]=acciones.get(t_BarreraS1[0]);  
 		a_BarreraS1[1]=acciones.get(t_BarreraS1[1]);
 
 
 		a_Calle=new Accion[1];
-		a_Calle[0]=acciones.get(t_Calle[0]); //temporal
+		a_Calle[0]=acciones.get(t_Calle[0]);  
 
 
 		a_Cartel=new Accion[2];
-		a_Cartel[0]=acciones.get(t_Cartel[0]); //temporal
+		a_Cartel[0]=acciones.get(t_Cartel[0]);  
 		a_Cartel[1]=acciones.get(t_Cartel[1]);
 	}
 
