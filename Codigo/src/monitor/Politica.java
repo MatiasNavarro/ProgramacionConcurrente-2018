@@ -1,11 +1,11 @@
-package monitor;
+package monitor; 
 
 
 public class Politica { 
 	//Vector indicando cuales transiciones son de mayor prioridad.
 	//{2,5,4} -> indica que la transicion 2, 5 y 4 son de mayor prioridad comparadas con el resto de las transiciones
-	private int[] transiciones_prioritarias_subida; 
-	private int[] transiciones_prioritarias_bajada; 
+	private int[] transiciones_prioritarias_p1; //subida
+	private int[] transiciones_prioritarias_p2; //bajada
 	
 	
 	private int modo_politica;
@@ -21,8 +21,8 @@ public class Politica {
 	}
 	
 	public void setPrioridades(int[] subida, int[] bajada){
-		this.transiciones_prioritarias_bajada=bajada;
-		this.transiciones_prioritarias_subida=subida;
+		this.transiciones_prioritarias_p2=bajada;
+		this.transiciones_prioritarias_p1=subida;
 	}
 	
 	/**
@@ -51,6 +51,10 @@ public class Politica {
 	
 			int indice=0;
 			boolean flag=true;
+			if(lista_m[24] == 1) {
+				indice = 24;
+				return indice;
+			}
 			while(flag){
 				int numero_aleatorio = (int) (Math.random()*100);
 				indice=numero_aleatorio % lista_m.length; //Defino una posicion aleatoria.
@@ -67,27 +71,23 @@ public class Politica {
 	}
 	
 	/**
-	 * Metodo politicaPrimeroSuben. Implementa la decision de cual disparar en base a darle mayor prioridad a la gente que tiene que subir al ferrocarril.
+	 * Metodo politica1. Implementa la decision de cual disparar en base a darle mayor prioridad a la gente que tiene que subir al ferrocarril.
 	 * @param lista_m lista que contiene los enteros 1 y 0, representando con el 1 las transiciones que se pueden disparar.
 	 * @return int indice que representa a la transicion a disparar del vector de transiciones
 	 */
-	private int politicaPrimeroSuben(int[] lista_m){
+	private int politica1(int[] lista_m){
 		
-			int lista_aux[]=new int[lista_m.length];
-			boolean flag_hay_prioritarias=false;
-			for(int i=0;i<lista_m.length;i++){
-				lista_aux[i]=0;
+		int indice;	
+		if(lista_m[24] == 1) {
+				indice = 24;
+				return indice;
 			}
-			for(int i=0;i<transiciones_prioritarias_subida.length;i++){
-		         if(lista_m[transiciones_prioritarias_subida[i]]==1){ //El 1 indica que se puede disparar
-		             lista_aux[transiciones_prioritarias_subida[i]]=1;
-		             flag_hay_prioritarias=true;
-		         }
-		         
-		     }
 			
-			if(flag_hay_prioritarias){
-				 return this.politicaAleatoria(lista_aux);
+			if((lista_m[6]==1) && (lista_m[7]==1)){ //si la transicion 6 y la 7 estan sensibilizadas
+				int lista_aux[] = new int [lista_m.length];
+				lista_aux = lista_m.clone();
+				lista_aux[6] = 0; //la transicion 6 deja de estar sensibilizada asi van al piso 1
+				return this.politicaAleatoria(lista_aux);
 			}
 
 			
@@ -97,33 +97,26 @@ public class Politica {
 	}
 	
 	/**
-	 * Metodo politicaPrimeroBajan. Implementa la decision de cual disparar en base a darle mayor prioridad a la gente que tiene que bajar del ferrocarril.
+	 * Metodo politica2. Implementa la decision de cual disparar en base a darle mayor prioridad a la gente que tiene que bajar del ferrocarril.
 	 * @param lista_m lista que contiene los enteros 1 y 0, representando con el 1 las transiciones que se pueden disparar.
 	 * @return int indice que representa a la transicion a disparar del vector de transiciones
 	 */
-	private int politicaPrimeroBajan(int[] lista_m){
+	private int politica2(int[] lista_m){
 		
-		int lista_aux[]=new int[lista_m.length];
-		boolean flag_hay_prioritarias=false;
-		for(int i=0;i<lista_m.length;i++){
-			lista_aux[i]=0;
+		int indice;	
+		if(lista_m[24] == 1) {
+				indice = 24;
+				return indice;
+			}
+		if((lista_m[17]==1 || lista_m[18]==1) && (lista_m[19]==1 || lista_m[20]==1)) {
+			int lista_aux[] = new int [lista_m.length];
+			lista_aux = lista_m.clone();
+			lista_aux[19] = 0; //la transicion 44 deja de estar sensibilizada asi eligen salida 2
+			lista_aux[20] = 0; //la transicion 45 deja de estar sensibilizada asi eligen salida 2
+			return this.politicaAleatoria(lista_aux);
 		}
-		for(int i=0;i<transiciones_prioritarias_bajada.length;i++){
-	         if(lista_m[transiciones_prioritarias_bajada[i]]==1){ //El 1 indica que se puede disparar
-	             lista_aux[transiciones_prioritarias_bajada[i]]=1;
-	             flag_hay_prioritarias=true;
-	         }
-	         
-	     }
 		
-		if(flag_hay_prioritarias){
-			 return this.politicaAleatoria(lista_aux);
-		}
-
-			
-		     return this.politicaAleatoria(lista_m); //Si no esta definida la prioridad, se utiliza la aleatoriedad.
-			
-	
+		return this.politicaAleatoria(lista_m); 
 	}
 	
 	
@@ -139,11 +132,11 @@ public class Politica {
 			if(this.modo_politica==0){ //Politica aleatoria.
 				return politicaAleatoria(lista_m);
 			}
-			else if(this.modo_politica==1){ //Politica primero suben.
-				return politicaPrimeroSuben(lista_m);
+			else if(this.modo_politica==1){ //Politica 1: autos eligen piso 1
+				return politica1(lista_m);
 			}
-			else if(this.modo_politica==2){ //Politica primero bajan.
-				return politicaPrimeroBajan(lista_m);
+			else if(this.modo_politica==2){ //Politica 2: autos eligen salida 2
+				return politica2(lista_m);
 			}
 			else{
 				return 0;
