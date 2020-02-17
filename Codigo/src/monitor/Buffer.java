@@ -2,10 +2,10 @@ package monitor;
 
 //Existe una cola por transicion
 
-public class Cola { 
+public class Buffer { 
 	private int cantidad_de_hilos_en_cola;
 	
-	public Cola(){
+	public Buffer(){
 		this.cantidad_de_hilos_en_cola=0;
 	}
 	

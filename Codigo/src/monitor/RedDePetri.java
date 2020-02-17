@@ -21,8 +21,10 @@ public class RedDePetri{
 	private int[][] tinvariantes; //Matriz de T-Invariantes
 	private int[] constante_pinvariante;
 	private int[][] H; //Matriz H.
-	private int[][] B; //Matriz B. B= H * Q
+	private int[] B; //Matriz B. B= H * Q
 	private int[][] Q; //Vector Q
+	private int[] L;
+	private int[][] R;
 	private LogicaTemporal logica_temporal;
 	private int[] transiciones_inmediatas; //Un uno indica que la transicion es inmediata.
 	private int[] prioridades_subida; 
@@ -45,6 +47,8 @@ public class RedDePetri{
 	public RedDePetri(String path, Logger log){
 		this.path=path;
 		this.setMatrices();
+		
+		salto_linea="\n";
 
 		setCantTransiciones(I[1].length);
 
@@ -53,7 +57,8 @@ public class RedDePetri{
 		setTransicionesInmediatas();
 
 		this.B=getMatrizB_Actualizada(); //Calculo Matriz B
-		this.logica_temporal.updateTimeStamp(this.getConjuncionEAndB(), this.getConjuncionEAndB(),  -1);
+		this.L=getMatrizL_Actualizada();
+		this.logica_temporal.updateTimeStamp(this.getConjuncionEAndBandL(), this.getConjuncionEAndBandL(),  -1);
 
 		
 		this.M0=this.M.clone(); //Marcado inicial
@@ -195,9 +200,9 @@ public class RedDePetri{
 		int[][] marcado_siguiente = this.getMarcadoSiguiente(transicion);
 		//System.out.println(this.getSensibilizadasExtendido()[transicion]==1);
 		if (this.getSensibilizadasExtendido()[transicion]==1) {
-			int[] transSensAntesDisparo=this.getConjuncionEAndB();
+			int[] transSensAntesDisparo=this.getConjuncionEAndBandL();
 			M = marcado_siguiente; //Asignacion del nuevo marcado
-			this.logica_temporal.updateTimeStamp(transSensAntesDisparo, this.getConjuncionEAndB(),  transicion);
+			this.logica_temporal.updateTimeStamp(transSensAntesDisparo, this.getConjuncionEAndBandL(),  transicion);
 			try{
 				this.verificarPInvariantes(); // En cada disparo se verifica que se cumplan las ecuaciones del P-Invariante
 
@@ -253,7 +258,7 @@ public class RedDePetri{
 
 	private void verificarPInvariantes() throws IllegalStateException{
 		for (int i = 0; i < pinvariantes.length; i++) {	//Recorro todas las filas del pinvariantes
-			if(gerMarcadoPinvariante()[i]!=this.constante_pinvariante[i]) { //verifico que cada solucion del P-invariante con el marcado actual sea igual a la solucion arrojada al momento de configurar la red de petri en "constante_pinvariante"
+			if(getMarcadoPinvariante()[i]!=this.constante_pinvariante[i]) { //verifico que cada solucion del P-invariante con el marcado actual sea igual a la solucion arrojada al momento de configurar la red de petri en "constante_pinvariante"
 				throw new IllegalStateException("Error en los pinvariantes");	//en otras palabras, si el marcado en esas plazas resulta diferente, se dispara IllegalStateException
 			}
 		}
@@ -264,7 +269,7 @@ public class RedDePetri{
 	 * Metodo gerMarcadoPinvariante.
 	 * @return int[] Vector que contiene las soluciones a las ecuaciones de los P-invariantes
 	 */
-	private int[] gerMarcadoPinvariante() {
+	private int[] getMarcadoPinvariante() {
 		int[] resultado=new int[pinvariantes.length];			//Inicializacion del vector resultado
 		for (int i = 0; i < pinvariantes.length; i++) {			//Recorro las filas del vector pinvariantes
 			for (int j = 0; j < pinvariantes[0].length; j++) {	// 'j' representa cada columna del vector pinvariantes[fila]
@@ -312,16 +317,19 @@ public class RedDePetri{
 				pinvariantes = myParser.getPInvariante();
 
 
-				this.constante_pinvariante=gerMarcadoPinvariante(); //Obtiene el resultado de las ecuaciones del P-invariante
+				this.constante_pinvariante=getMarcadoPinvariante(); //Obtiene el resultado de las ecuaciones del P-invariante
 				//System.out.println(constante_pinvariante.length);
 
 				this.prioridades_subida = new int[33];
 	
 
 				this.prioridades_bajada = new int[33];
-
-
-	
+				
+				R = new int [I.length][I[0].length];//Matriz de arcos Lectores
+				
+				R[27][25]=1;
+				
+					
 		} 
 		catch (Exception e) {
 			e.printStackTrace();
@@ -338,7 +346,7 @@ public class RedDePetri{
 	 * Matriz B= Matriz H * Vector Q.
 	 * @return int[][] Matriz B. Utilizada en la ecuacion de estado.
 	 */
-	private int[][] getMatrizB_Actualizada(){
+	private int[] getMatrizB_Actualizada(){
 		this.Q=getVectorQ_Actualizado();
 		int Htranspuesta[][]=OperacionesMatricesListas.transpuesta(this.H);
 		int aux[][]=OperacionesMatricesListas.productoMatrices(Htranspuesta, this.Q);
@@ -351,8 +359,57 @@ public class RedDePetri{
 			}
 		}
 
-		this.B=aux;
+		int Baux[]=new int[aux.length];
+		for(int i=0; i<aux.length;i++){
+			Baux[i]=aux[i][0];
+		}
+		
+		this.B=Baux;
+		
+
+		
 		return this.B.clone();
+	}
+	
+	
+	
+	/**
+	 * Metodo getMatrizB_Actualizada. 
+	 * Matriz B= Matriz H * Vector Q.
+	 * @return int[][] Matriz B. Utilizada en la ecuacion de estado.
+	 */
+	private int[] getMatrizL_Actualizada(){
+		this.Q=getVectorQ_Actualizado();
+		int[][] w =new int[this.Q.length][this.Q[0].length];
+		for(int i=0;i<this.Q.length;i++) {
+			if(this.Q[i][0]==0)
+				w[i][0]=1;
+			else
+				w[i][0]=0;
+		}
+
+			
+		
+		int Rtranspuesta[][]=OperacionesMatricesListas.transpuesta(this.R);
+		int aux[][]=OperacionesMatricesListas.productoMatrices(Rtranspuesta, w);
+		for(int i=0; i<aux.length;i++){
+			if(aux[i][0]==0){
+				aux[i][0]=1;
+			}
+			else{
+				aux[i][0]=0;
+			}
+		}
+		
+		int Laux[]=new int[aux.length];
+		for(int i=0; i<aux.length;i++){
+			Laux[i]=aux[i][0];
+		}
+		
+
+
+		this.L=Laux;
+		return this.L.clone();
 	}
 
 	/**
@@ -374,10 +431,6 @@ public class RedDePetri{
 		}
 		return aux;
 	}
-
-
-
-
 
 	/**
 	 * Metodo getMarcadoSiguiente. Permite obtener el marcado siguiente al disparar una determinada transicion.
@@ -441,16 +494,13 @@ public class RedDePetri{
 		int Ex[];
 		int E[]= this.getSensibilizadas();
 
-		int B[][]=this.getMatrizB_Actualizada();
+//		int R[] = this.getMatrizL_Actualizada();
 
 
-		int Baux[]=new int[B.length];
-		for(int i=0; i<B.length;i++){
-			Baux[i]=B[i][0];
-		}
-		int Z[]= logica_temporal.getVectorZ_Actualizado(this.getConjuncionEAndB());
 
-		Ex=OperacionesMatricesListas.andVector(OperacionesMatricesListas.andVector(E, Z),Baux);
+		int Z[]= logica_temporal.getVectorZ_Actualizado(this.getConjuncionEAndBandL());
+
+		Ex=OperacionesMatricesListas.andVector(OperacionesMatricesListas.andVector(E, Z),this.B);
 
 
 		return Ex;
@@ -458,21 +508,16 @@ public class RedDePetri{
 
 
 	/**
-	 * Metodo getConjuncionEAndB
+	 * Metodo getConjuncionEAndBandL
 	 * @return int[] Vector resultante de:  vector E and vector B.
 	 */
-	public int[] getConjuncionEAndB(){
+	public int[] getConjuncionEAndBandL(){
 		int E[]= this.getSensibilizadas();
 
-		int B[][]=this.getMatrizB_Actualizada();
 
-		int Baux[]=new int[B.length];
-		for(int i=0; i<B.length;i++){
-			Baux[i]=B[i][0];
-		}
+		int aux[] = OperacionesMatricesListas.andVector(this.B,E);
 
-
-		int q[]=OperacionesMatricesListas.andVector(Baux,E);
+		int q[]= OperacionesMatricesListas.andVector(aux,this.L);
 
 		return q;
 	}

@@ -42,8 +42,13 @@ public class LogicaTemporal {
 		 this.vector_de_intervalos = new int[this.cantidad_de_transiciones][2];
 		 for (int i = 0; i < this.cantidad_de_transiciones; i++) {
 		     for (int j = 0; j < 2; j++) {
-		          this.vector_de_intervalos [i][j]=0;
+		    	 if(j==0)
+		    		 this.vector_de_intervalos [i][j]=0;
+		    	 else
+		    		 this.vector_de_intervalos [i][j]=-1;
 		     }
+		     
+		     
 		     this.vector_de_intervalos[15][0]=3000;
 		     this.vector_de_intervalos[15][1]=-1;
 		     this.vector_de_intervalos[16][0]=3000;

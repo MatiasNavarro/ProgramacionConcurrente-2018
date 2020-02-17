@@ -8,7 +8,7 @@ public class Monitor {
 	//Elementos del monitor.
 	private Politica politica;
 	private int cantidad_de_transiciones; //Igual a cantidad de colas.
-    private Cola[] colas;
+    private Buffer[] colas;
     private RedDePetri rdp;
     private Semaphore mutex;
     private Logger log;
@@ -72,9 +72,9 @@ public class Monitor {
 		this.rdp=new RedDePetri(path,this.log);
 		this.cantidad_de_transiciones=rdp.getCantTransiciones();
 		
-		colas= new Cola[this.cantidad_de_transiciones];
+		colas= new Buffer[this.cantidad_de_transiciones];
         for(int i=0;i<this.cantidad_de_transiciones;i++){ 
-            colas[i]=new Cola(); //Inicialización de colas.
+            colas[i]=new Buffer(); //Inicialización de colas.
         }
         
         
@@ -148,6 +148,8 @@ public class Monitor {
 	
 	public void dispararTransicion(int transicion) {
 		int[] m;
+//		if(!condicion)
+//			System.out.println("condicion false");
 		while(condicion){
 			try{
 				mutex.acquire(); //Adquiero acceso al monitor.

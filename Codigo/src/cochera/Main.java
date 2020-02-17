@@ -24,9 +24,9 @@ public class Main {
 	private static String name_file_console="";
 	private static String name_file="";
 	private static final int NUMBER_OF_THREADS=26;
-	private static final int EXECUTION_TIME=35;
+	private static final int EXECUTION_TIME=15;
 	private static final TimeUnit TIME_UNIT=TimeUnit.SECONDS;
-	private static final boolean FLAG_TEST_PRIORITIES=false;
+	private static final boolean FLAG_TEST_PRIORITIES=true;
 	/*
 	 * La politica puede ser:
 	 *	0: aleatoria.
@@ -92,11 +92,7 @@ public class Main {
 //			acciones_tren[j]=acciones.get(transiciones_tren[j]);
 //		}
 
-		
-		//Inicio Barreras (generadores de tokens) - 6 hilos
-		executor.execute(new FireTransitions(data.get_t_BarreraE1(), monitor, data.get_a_BarreraE1()));
-		executor.execute(new FireTransitions(data.get_t_BarreraE2(), monitor, data.get_a_BarreraE2()));
-		executor.execute(new FireTransitions(data.get_t_BarreraE3(), monitor, data.get_a_BarreraE3()));
+
 		
 		//Inicio Eleccion de piso
 		executor.execute(new FireTransitions(data.get_t_EleccionP1(),monitor, data.get_a_EleccionP1()));
@@ -130,6 +126,12 @@ public class Main {
 		
 		//Cartel - 1 Hilo
 		executor.execute(new FireTransitions(data.get_t_Cartel(),monitor, data.get_a_Cartel()));  
+		
+		
+		//Inicio Barreras (generadores de tokens) - 6 hilos
+		executor.execute(new FireTransitions(data.get_t_BarreraE1(), monitor, data.get_a_BarreraE1()));
+		executor.execute(new FireTransitions(data.get_t_BarreraE2(), monitor, data.get_a_BarreraE2()));
+		executor.execute(new FireTransitions(data.get_t_BarreraE3(), monitor, data.get_a_BarreraE3()));
 
 
 		
