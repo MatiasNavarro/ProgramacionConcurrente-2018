@@ -13,18 +13,17 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-import acciones.Accion;
-import acciones.ConsolePrinter;
+
 import monitor.Cronometro;
 import monitor.Monitor;
-import util.ThreadData;
+import util.Data;
 
 
 public class Main {
 	private static String name_file_console="";
 	private static String name_file="";
 	private static final int NUMBER_OF_THREADS=26;
-	private static final int EXECUTION_TIME=15;
+	private static final int EXECUTION_TIME=50;
 	private static final TimeUnit TIME_UNIT=TimeUnit.SECONDS;
 	private static final boolean FLAG_TEST_PRIORITIES=true;
 	/*
@@ -74,7 +73,7 @@ public class Main {
 		}
 		
 		
-		ThreadData data = new ThreadData(fileStream);
+		Data data = Data.getInstance();
 		
 
 		
@@ -95,43 +94,43 @@ public class Main {
 
 		
 		//Inicio Eleccion de piso
-		executor.execute(new FireTransitions(data.get_t_EleccionP1(),monitor, data.get_a_EleccionP1()));
-		executor.execute(new FireTransitions(data.get_t_EleccionP2(),monitor, data.get_a_EleccionP2()));
+		executor.execute(new FireTransitions(data.get_t_EleccionP1(),monitor,fileStream));
+		executor.execute(new FireTransitions(data.get_t_EleccionP2(),monitor, fileStream));
 		
 		//Inicio Rampa-Piso2
-		executor.execute(new FireTransitions(data.get_t_Bajada(),monitor, data.get_a_Bajada()));
-		executor.execute(new FireTransitions(data.get_t_Subida(),monitor, data.get_a_Subida()));		
+		executor.execute(new FireTransitions(data.get_t_Bajada(),monitor, fileStream));
+		executor.execute(new FireTransitions(data.get_t_Subida(),monitor, fileStream));		
 
 
 		
 		//Camino a la caja por piso - 2 hilos
-		executor.execute(new FireTransitions(data.get_t_IrACaja1(),monitor, data.get_a_IrAcaja1()));
-		executor.execute(new FireTransitions(data.get_t_IrACaja2(),monitor, data.get_a_IrACaja2()));
+		executor.execute(new FireTransitions(data.get_t_IrACaja1(),monitor, fileStream));
+		executor.execute(new FireTransitions(data.get_t_IrACaja2(),monitor, fileStream));
 		
 		//Caja - 2 hilos
-		executor.execute(new FireTransitions(data.get_t_CobrarPiso1(),monitor, data.get_a_CobrarPiso1()));  
-		executor.execute(new FireTransitions(data.get_t_CobrarPiso2(),monitor, data.get_a_CobrarPiso2()));	
+		executor.execute(new FireTransitions(data.get_t_CobrarPiso1(),monitor, fileStream));  
+		executor.execute(new FireTransitions(data.get_t_CobrarPiso2(),monitor, fileStream));	
 		
 		
 		//Eleccion de salida - 2 hilos
-		executor.execute(new FireTransitions(data.get_t_EleccionS1(),monitor, data.get_a_EleccionS1()));	 
-		executor.execute(new FireTransitions(data.get_t_EleccionS2(),monitor, data.get_a_EleccionS2()));
+		executor.execute(new FireTransitions(data.get_t_EleccionS1(),monitor, fileStream));	 
+		executor.execute(new FireTransitions(data.get_t_EleccionS2(),monitor, fileStream));
 		
 		//Barreras Salida - 2 hilos
-		executor.execute(new FireTransitions(data.get_t_BarreraS1(),monitor, data.get_a_BarreraS1()));	
-		executor.execute(new FireTransitions(data.get_t_BarreraS2(),monitor, data.get_a_BarreraS2()));	  
+		executor.execute(new FireTransitions(data.get_t_BarreraS1(),monitor, fileStream));	
+		executor.execute(new FireTransitions(data.get_t_BarreraS2(),monitor, fileStream));	  
 		
 		//Calle - 1 Hilo
-		executor.execute(new FireTransitions(data.get_t_Calle(),monitor, data.get_a_Calle()));
+		executor.execute(new FireTransitions(data.get_t_Calle(),monitor, fileStream));
 		
 		//Cartel - 1 Hilo
-		executor.execute(new FireTransitions(data.get_t_Cartel(),monitor, data.get_a_Cartel()));  
+		executor.execute(new FireTransitions(data.get_t_Cartel(),monitor, fileStream));  
 		
 		
 		//Inicio Barreras (generadores de tokens) - 6 hilos
-		executor.execute(new FireTransitions(data.get_t_BarreraE1(), monitor, data.get_a_BarreraE1()));
-		executor.execute(new FireTransitions(data.get_t_BarreraE2(), monitor, data.get_a_BarreraE2()));
-		executor.execute(new FireTransitions(data.get_t_BarreraE3(), monitor, data.get_a_BarreraE3()));
+		executor.execute(new FireTransitions(data.get_t_BarreraE1(), monitor, fileStream));
+		executor.execute(new FireTransitions(data.get_t_BarreraE2(), monitor, fileStream));
+		executor.execute(new FireTransitions(data.get_t_BarreraE3(), monitor,fileStream));
 
 
 		
@@ -188,34 +187,26 @@ public class Main {
 	public static void setPath(String name_fil,String name_file_consol,boolean flag_prioridad) {
 		if(!flag_prioridad){
 			if((System.getProperty("os.name")).equals("Windows 10")){	
-				 if(System.getProperty("user.name").equals("kzAx")){
+				 if(System.getProperty("user.name").equals("usuario")){
 					 name_file="..\\src\\RedesParaTest\\TestTren\\excelTren.xls";
-					 name_file_console="..\\src\\logueo\\logFileD.txt";
-				 }
-				 else{
-					 name_file="..\\..\\LeagueOfJustice\\CodigoJava\\src\\RedesParaTest\\TestTren\\excelTren.xls"; //Path para Windows.
-					 name_file_console="..\\..\\LeagueOfJustice\\CodigoJava\\src\\logueo\\logFileD.txt"; 
+					 name_file_console="..\\src\\logueo\\logFileE.txt";
 				 }
 			}
 			else {
 				name_file="./src/RedesParaTest/TestTren/excelTren.xls";
-				name_file_console="./src/logueo/logFileD.txt";
+				name_file_console="./src/logueo/logFileE.txt";
 			}
 		}
 		else{
 			if((System.getProperty("os.name")).equals("Windows 10")){	
-				 if(System.getProperty("user.name").equals("kzAx")){
+				 if(System.getProperty("user.name").equals("usuario")){
 					 name_file="..\\src\\RedesParaTest\\TestTren\\excelTrenPrioridades.xls";
-					 name_file_console="..\\src\\logueo\\logFileD.txt";
-				 }
-				 else{
-					 name_file="..\\..\\LeagueOfJustice\\CodigoJava\\src\\RedesParaTest\\TestTren\\excelTrenPrioridades.xls"; //Path para Windows.
-					 name_file_console="..\\..\\LeagueOfJustice\\CodigoJava\\src\\logueo\\logFileD.txt"; 
+					 name_file_console="..\\src\\logueo\\logFileE.txt";
 				 }
 			}
 			else {
 				name_file="./src/RedesParaTest/TestTren/excelTrenPrioridades.xls";
-				name_file_console="./src/logueo/logFileD.txt";
+				name_file_console="./src/logueo/logFileE.txt";
 			}
 		}
 	}

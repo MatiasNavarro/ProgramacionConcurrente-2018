@@ -49,10 +49,10 @@ public class LogicaTemporal {
 		     }
 		     
 		     
-		     this.vector_de_intervalos[15][0]=3000;
-		     this.vector_de_intervalos[15][1]=-1;
-		     this.vector_de_intervalos[16][0]=3000;
-		     this.vector_de_intervalos[16][1]=-1;
+//		     this.vector_de_intervalos[15][0]=3000;
+//		     this.vector_de_intervalos[15][1]=-1;
+//		     this.vector_de_intervalos[16][0]=3000;
+//		     this.vector_de_intervalos[16][1]=-1;
 		 }
 
 		

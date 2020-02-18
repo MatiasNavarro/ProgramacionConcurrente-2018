@@ -2,10 +2,9 @@ package monitor;
 
 
 
-import java.io.File;
-import jxl.*;
 import logueo.Logger;
 import util.Parser;
+import util.Data;
 
 
 
@@ -38,6 +37,7 @@ public class RedDePetri{
 	private int[][] M0; //Marcado inicial
 	private int[][] suma_disparos_transiciones;
 	private int contadorTransicionesDisparadas;
+	private Data data;
 	boolean flagImpresionVerifTInv=false;
 
 
@@ -62,6 +62,8 @@ public class RedDePetri{
 
 		
 		this.M0=this.M.clone(); //Marcado inicial
+		
+		this.data = Data.getInstance();
 
 
 
@@ -202,6 +204,8 @@ public class RedDePetri{
 		if (this.getSensibilizadasExtendido()[transicion]==1) {
 			int[] transSensAntesDisparo=this.getConjuncionEAndBandL();
 			M = marcado_siguiente; //Asignacion del nuevo marcado
+			this.log.addMessage(data.getDiccionario().get(transicion), 3);
+			this.log.addMessage(salto_linea, 3);
 			this.logica_temporal.updateTimeStamp(transSensAntesDisparo, this.getConjuncionEAndBandL(),  transicion);
 			try{
 				this.verificarPInvariantes(); // En cada disparo se verifica que se cumplan las ecuaciones del P-Invariante

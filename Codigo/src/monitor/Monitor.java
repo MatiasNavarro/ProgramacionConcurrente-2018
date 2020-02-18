@@ -24,8 +24,9 @@ public class Monitor {
 		 //Fairness true: FIFO en cola de hilos bloqueados.
 	       mutex=new Semaphore(1,true);
 	       //La red de petri y las transiciones se configuran posteriormente.
-	       this.log=new Logger(3);
+	       this.log=new Logger(4);
 	       this.log.createMessage("Transiciones disparadas: \r\n", 1);
+	       this.log.createMessage("Transiciones disparadas: \r\n", 3);
 		   condicion=true;
 		 
 		   //LogFileA: Evolucion del marcado
@@ -48,7 +49,7 @@ public class Monitor {
 		catch(InterruptedException e){
 			e.printStackTrace();
 		}
-		for(int i=0;i<3;i++){
+		for(int i=0;i<4;i++){
 			log.flushBufferToFile(i);
 		}
 		mutex.release();
@@ -184,8 +185,11 @@ public class Monitor {
 						//System.out.println("transicion"+transicionADisparar);
 						colas[transicionADisparar].resume(); //Sale un hilo de una cola de condicion para disparara esa transicion 
 						//Despierta un hilo que estaba bloqueado en la cola correspondiente
+						
 					}
-					catch(IndexOutOfBoundsException e){e.printStackTrace();}
+					catch(IndexOutOfBoundsException e){
+						e.printStackTrace();
+						}
 					
 					mutex.release();
 	                return;

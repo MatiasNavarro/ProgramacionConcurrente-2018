@@ -1,14 +1,16 @@
 package cochera;
 
-import acciones.Accion;
+
 import monitor.Monitor;
+import java.io.PrintStream;
+import util.Data;
 
 
 public class FireTransitions implements Runnable {
     private int[] transitions_to_fire;
     private Monitor monitor;
-    private Accion[] acciones;
-
+	private PrintStream log;
+	private Data data;
     
 /**
  * 
@@ -16,23 +18,26 @@ public class FireTransitions implements Runnable {
  * @param monitor
  */
     public FireTransitions(
-    		int[] transiciones_viaje, 
+    		int[] transiciones, 
     		Monitor monitor,
-    		Accion[] acciones
+    		PrintStream log
     		) {
-        this.transitions_to_fire = transiciones_viaje;
+        this.transitions_to_fire = transiciones;
         this.monitor = monitor;
-        this.acciones=acciones;
+        this.log = log;
+        this.data = Data.getInstance();
+
+        
         
     }
 
     @Override
     public void run() {
-//        int vueltas=0;
     	while(monitor.getCondicion()) {
     		for(int i=0; i<this.transitions_to_fire.length; i++) {
     			monitor.dispararTransicion(this.transitions_to_fire[i]);
-    			acciones[i].ejecutarAccion();    			
+    			System.out.println(data.getDiccionario().get(transitions_to_fire[i]));
+    			this.log.println(data.getDiccionario().get(transitions_to_fire[i]));
     	       
     		}
     	}

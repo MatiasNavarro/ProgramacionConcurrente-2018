@@ -30,11 +30,8 @@ public class Logger {
 				   messages[i]=new String("");
 				  		   
 			    	if((System.getProperty("os.name")).equals("Windows 10")){	
-			    		 if(System.getProperty("user.name").equals("kzAx")){
+			    		 if(System.getProperty("user.name").equals("usuario")){
 			    			 this.name_files[i]="..\\src\\logueo\\logFile"+ this.getLetraAbecedario(i) +".txt"; 
-						 }
-						 else{
-							 this.name_files[i]="..\\..\\LeagueOfJustice\\CodigoJava\\src\\logueo\\logFile"+ this.getLetraAbecedario(i) +".txt"; 
 						 }
 			    	}
 			    	else{
