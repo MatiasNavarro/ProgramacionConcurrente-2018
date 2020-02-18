@@ -26,8 +26,6 @@ public class RedDePetri{
 	private int[][] R;
 	private LogicaTemporal logica_temporal;
 	private int[] transiciones_inmediatas; //Un uno indica que la transicion es inmediata.
-	private int[] prioridades_subida; 
-	private int[] prioridades_bajada;
 	private Logger log;
 
 	private String salto_linea;
@@ -97,13 +95,6 @@ public class RedDePetri{
 		return this.M0;
 	}
 
-	public int[] getPrioridadesSubida(){
-		return this.prioridades_subida.clone();
-	}
-
-	public int[] getPrioridadesBajada(){
-		return this.prioridades_bajada.clone();
-	}
 
 
 	public int[] getVectorTransicionesInmediatas(){
@@ -324,11 +315,7 @@ public class RedDePetri{
 				this.constante_pinvariante=getMarcadoPinvariante(); //Obtiene el resultado de las ecuaciones del P-invariante
 				//System.out.println(constante_pinvariante.length);
 
-				this.prioridades_subida = new int[33];
-	
 
-				this.prioridades_bajada = new int[33];
-				
 				R = new int [I.length][I[0].length];//Matriz de arcos Lectores
 				
 				R[27][25]=1;

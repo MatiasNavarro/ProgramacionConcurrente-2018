@@ -4,8 +4,7 @@ package monitor;
 public class Politica { 
 	//Vector indicando cuales transiciones son de mayor prioridad.
 	//{2,5,4} -> indica que la transicion 2, 5 y 4 son de mayor prioridad comparadas con el resto de las transiciones
-	private int[] transiciones_prioritarias_p1; //subida
-	private int[] transiciones_prioritarias_p2; //bajada
+
 	
 	
 	private int modo_politica;
@@ -20,10 +19,7 @@ public class Politica {
 			
 	}
 	
-	public void setPrioridades(int[] subida, int[] bajada){
-		this.transiciones_prioritarias_p2=bajada;
-		this.transiciones_prioritarias_p1=subida;
-	}
+
 	
 	/**
 	 * Metodo getModo.

@@ -117,7 +117,6 @@ public class Monitor {
 			return;
 		}
 		this.politica=new Politica(Modo);
-		this.politica.setPrioridades(rdp.getPrioridadesSubida(), rdp.getPrioridadesBajada());
 		mutex.release();
 	}
 	
