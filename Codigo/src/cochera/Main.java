@@ -3,8 +3,7 @@ package cochera;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
-import java.util.HashMap;
-import java.io.IOException;  // Import the IOException class to handle errors
+
 
 
 
@@ -25,7 +24,7 @@ public class Main {
 	private static final int NUMBER_OF_THREADS=26;
 	private static final int EXECUTION_TIME=35;
 	private static final TimeUnit TIME_UNIT=TimeUnit.SECONDS;
-	private static final boolean FLAG_TEST_PRIORITIES=true;
+
 	/*
 	 * La politica puede ser:
 	 *	0: aleatoria.
@@ -36,7 +35,7 @@ public class Main {
 	
 	public static void main(String[] args) throws InterruptedException {
 		
-		setPath(name_file,name_file_console,FLAG_TEST_PRIORITIES); //seteo los paths de los diferentes archivos a utilizar
+		setPath(); //seteo los paths de los diferentes archivos a utilizar
 
 		/*
 		 * Seteo el log de acciones al directorio donde indique name_file_console
@@ -83,13 +82,8 @@ public class Main {
 		//Inicializo ThreadPoolExecutor, maximo de cantidad_de_hilos.
 		ThreadPoolExecutor executor=(ThreadPoolExecutor)Executors.newFixedThreadPool(NUMBER_OF_THREADS);  //creo un ThreadPoolExecutor de tamaño maximo 26 hilos
 		
-		//Inicio tren driver - 1 hilos
 
-//		
-//		Accion[] acciones_tren=new Accion[14];
-//		for(int j=0; j<transiciones_tren.length;j++){
-//			acciones_tren[j]=acciones.get(transiciones_tren[j]);
-//		}
+
 
 
 		
@@ -184,31 +178,16 @@ public class Main {
 	
 	
 	
-	public static void setPath(String name_fil,String name_file_consol,boolean flag_prioridad) {
-		if(!flag_prioridad){
-			if((System.getProperty("os.name")).equals("Windows 10")){	
-				 if(System.getProperty("user.name").equals("usuario")){
-					 name_file="..\\src\\RedesParaTest\\TestTren\\excelTren.xls";
-					 name_file_console="..\\src\\logueo\\logFileZ.txt";
-				 }
-			}
-			else {
-				name_file="./src/RedesParaTest/TestTren/excelTren.xls";
-				name_file_console="./src/logueo/logFileZ.txt";
-			}
+	public static void setPath() {
+		if((System.getProperty("os.name")).equals("Windows 10")){	
+			 if(System.getProperty("user.name").equals("usuario")){
+				 name_file_console="..\\src\\logueo\\logFileZ.txt";
+			 }
 		}
-		else{
-			if((System.getProperty("os.name")).equals("Windows 10")){	
-				 if(System.getProperty("user.name").equals("usuario")){
-					 name_file="..\\src\\RedesParaTest\\TestTren\\excelTrenPrioridades.xls";
-					 name_file_console="..\\src\\logueo\\logFileZ.txt";
-				 }
-			}
-			else {
-				name_file="./src/RedesParaTest/TestTren/excelTrenPrioridades.xls";
-				name_file_console="./src/logueo/logFileZ.txt";
-			}
+		else {
+			name_file_console="./src/logueo/logFileZ.txt";
 		}
+		
 	}
 
 }

@@ -128,9 +128,9 @@ public class RedDePetri{
 	 * Metodo getMatrizH. Usado unicamente para Test.
 	 * @return int[][] Matriz de inhibicion.
 	 */
-	private int[][] getMatrizH(){
-		return H;
-	}
+//	private int[][] getMatrizH(){
+//		return H;
+//	}
 
 	public int[][] getPInv(){
 		return pinvariantes.clone();
@@ -480,9 +480,9 @@ public class RedDePetri{
 	}
 
 
-	private int[][] getTinvariant() {
-		return this.tinvariantes;
-	}
+//	private int[][] getTinvariant() {
+//		return this.tinvariantes;
+//	}
 
 	public LogicaTemporal getLogicaTemporal() {
 		return this.logica_temporal;

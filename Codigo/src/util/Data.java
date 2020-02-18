@@ -1,10 +1,9 @@
 package util;
 
 
-import java.io.PrintStream;
 import java.util.HashMap;
 
-import monitor.Monitor;
+
 
 public class Data{
 	private static int[] t_BarreraE1, t_BarreraE2, t_BarreraE3, t_EleccionP1, t_EleccionP2, t_Bajada, t_Subida, t_IrACaja1, t_IrACaja2, t_CobrarPiso1, t_CobrarPiso2, t_EleccionS1, t_EleccionS2, t_BarreraS2, t_BarreraS1, t_Calle, t_Cartel    ;
