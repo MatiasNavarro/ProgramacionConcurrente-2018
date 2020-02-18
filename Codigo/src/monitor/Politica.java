@@ -20,9 +20,9 @@ public class Politica {
 			
 	}
 	
-	public void setPrioridades(int[] subida, int[] bajada){
-		this.transiciones_prioritarias_p2=bajada;
-		this.transiciones_prioritarias_p1=subida;
+	public void setPrioridades(int[] p1, int[] p2){
+		this.transiciones_prioritarias_p2=p2;
+		this.transiciones_prioritarias_p1=p1;
 	}
 	
 	/**

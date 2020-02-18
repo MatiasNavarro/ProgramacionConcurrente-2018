@@ -324,10 +324,11 @@ public class RedDePetri{
 				this.constante_pinvariante=getMarcadoPinvariante(); //Obtiene el resultado de las ecuaciones del P-invariante
 				//System.out.println(constante_pinvariante.length);
 
-				this.prioridades_subida = new int[33];
+				this.prioridades_subida = new int[] {7};
+
 	
 
-				this.prioridades_bajada = new int[33];
+				this.prioridades_bajada = new int[] {17,18};
 				
 				R = new int [I.length][I[0].length];//Matriz de arcos Lectores
 				
