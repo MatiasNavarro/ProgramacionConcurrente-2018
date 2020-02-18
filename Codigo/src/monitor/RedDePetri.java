@@ -40,10 +40,9 @@ public class RedDePetri{
 
 
 
+	private static final RedDePetri instance =new RedDePetri(); 
 
-
-	public RedDePetri(String path, Logger log){
-		this.path=path;
+	private RedDePetri(){
 		this.setMatrices();
 		
 		salto_linea="\n";
@@ -74,7 +73,11 @@ public class RedDePetri{
 		}
 
 		contadorTransicionesDisparadas=0;
-		this.setLogEventos(log);
+//		this.setLogEventos(log);
+	}
+	
+	public static RedDePetri getInstance() {
+		return instance;
 	}
 
 	/**

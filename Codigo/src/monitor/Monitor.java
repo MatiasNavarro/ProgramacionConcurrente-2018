@@ -71,7 +71,8 @@ public class Monitor {
 		catch(InterruptedException e){
 			e.printStackTrace();
 		}
-		this.rdp=new RedDePetri(path,this.log);
+		this.rdp=RedDePetri.getInstance();
+		this.rdp.setLogEventos(this.log);
 		this.cantidad_de_transiciones=rdp.getCantTransiciones();
 		
 		colas= new Buffer[this.cantidad_de_transiciones];
