@@ -10,8 +10,8 @@ public class Politica {
 	
 	private int modo_politica;
 	//Modo 0: aleatoria.
-    //Modo 1: primero los que suben.
-    //Modo 2: primero los que bajan.
+    //Modo 1: Primero lleno piso 1
+    //Modo 2: Elijo salida 2.
 	
 	
 	
