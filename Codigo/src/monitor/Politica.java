@@ -2,10 +2,6 @@ package monitor;
 
 
 public class Politica { 
-	//Vector indicando cuales transiciones son de mayor prioridad.
-	//{2,5,4} -> indica que la transicion 2, 5 y 4 son de mayor prioridad comparadas con el resto de las transiciones
-
-	
 	
 	private int modo_politica;
 	//Modo 0: aleatoria.
@@ -67,7 +63,8 @@ public class Politica {
 	}
 	
 	/**
-	 * Metodo politica1. Implementa la decision de cual disparar en base a darle mayor prioridad a la gente que tiene que subir al ferrocarril.
+	 * Metodo politica1. Implementa la decision de cual disparar en base a de si el piso 1 esta lleno o no.
+	 * en caso de que el La transicion que prende el cartel este sensibilizada y en la cola, tiene prioridad sobre toda la red.
 	 * @param lista_m lista que contiene los enteros 1 y 0, representando con el 1 las transiciones que se pueden disparar.
 	 * @return int indice que representa a la transicion a disparar del vector de transiciones
 	 */
@@ -93,7 +90,8 @@ public class Politica {
 	}
 	
 	/**
-	 * Metodo politica2. Implementa la decision de cual disparar en base a darle mayor prioridad a la gente que tiene que bajar del ferrocarril.
+	 * Metodo politica2. Implementa la decision de cual disparar en base a darle prioridad a la salida 2 sobre la 1.
+	 * en caso de que el La transicion que prende el cartel este sensibilizada y en la cola, tiene prioridad sobre toda la red.	 
 	 * @param lista_m lista que contiene los enteros 1 y 0, representando con el 1 las transiciones que se pueden disparar.
 	 * @return int indice que representa a la transicion a disparar del vector de transiciones
 	 */
@@ -146,6 +144,11 @@ public class Politica {
 		
 	}
 	
+	/**
+	 * Metodo checkDisparo. Metodo que devuelve false en caso de que la transicion a disparar sea sobre la cual se desensibiliza mediante la politica.
+	 * @param Vs es el vector de transiciones sensibilizadas
+	 * @return int transicion que representa a la transicion a disparar del vector de transiciones
+	 */
 	public boolean  checkDisparo(int[]vs, int transicion) {
 		
 		if(this.modo_politica==0){ //Politica aleatoria.
@@ -166,8 +169,5 @@ public class Politica {
 
 
 	}
-	
-	
-	
 	
 }
