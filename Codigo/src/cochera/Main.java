@@ -189,7 +189,7 @@ public class Main {
 			if((System.getProperty("os.name")).equals("Windows 10")){	
 				 if(System.getProperty("user.name").equals("usuario")){
 					 name_file="..\\src\\RedesParaTest\\TestTren\\excelTren.xls";
-					 name_file_console="..\\src\\logueo\\logFileE.txt";
+					 name_file_console="C:\\Users\\usuario\\Desktop\\ProgramacionConcurrente-2018\\Codigo\\src\\logueo\\logFileE.txt";
 				 }
 			}
 			else {
@@ -201,7 +201,7 @@ public class Main {
 			if((System.getProperty("os.name")).equals("Windows 10")){	
 				 if(System.getProperty("user.name").equals("usuario")){
 					 name_file="..\\src\\RedesParaTest\\TestTren\\excelTrenPrioridades.xls";
-					 name_file_console="..\\src\\logueo\\logFileE.txt";
+					 name_file_console="C:\\Users\\usuario\\Desktop\\ProgramacionConcurrente-2018\\Codigo\\src\\logueo\\logFileE.txt";
 				 }
 			}
 			else {
