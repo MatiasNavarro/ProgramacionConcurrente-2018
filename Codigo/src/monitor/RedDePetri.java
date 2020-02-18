@@ -179,6 +179,7 @@ public class RedDePetri{
 
 		}
 
+
 		return transicionesSensibilizadas;
 	}
 
@@ -485,15 +486,16 @@ public class RedDePetri{
 		int Ex[];
 		int E[]= this.getSensibilizadas();
 
-//		int R[] = this.getMatrizL_Actualizada();
+		this.getMatrizL_Actualizada();
+		this.getMatrizB_Actualizada();
 
 
 
 		int Z[]= logica_temporal.getVectorZ_Actualizado(this.getConjuncionEAndBandL());
 
-		Ex=OperacionesMatricesListas.andVector(OperacionesMatricesListas.andVector(E, Z),this.B);
+		Ex=OperacionesMatricesListas.andVector(OperacionesMatricesListas.andVector(OperacionesMatricesListas.andVector(E, Z),this.B),this.L);
 
-
+		
 		return Ex;
 	}
 

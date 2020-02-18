@@ -187,7 +187,8 @@ public class Monitor {
 					try{
 						int transicionADisparar=politica.cualDisparar(m); //Pregunto a politica 
 						this.log.addMessage(String.valueOf(transicionADisparar), 4);
-						this.log.addMessage("/n", 4);
+						String salto_linea="\n";
+						this.log.addMessage(salto_linea, 4);
 						//System.out.println("transicion"+transicionADisparar);
 						colas[transicionADisparar].resume(); //Sale un hilo de una cola de condicion para disparara esa transicion 
 						//Despierta un hilo que estaba bloqueado en la cola correspondiente

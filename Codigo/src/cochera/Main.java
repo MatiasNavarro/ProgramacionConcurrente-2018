@@ -24,7 +24,7 @@ public class Main {
 	private static final int NUMBER_OF_THREADS=26;
 	private static final int EXECUTION_TIME=35;
 	private static final TimeUnit TIME_UNIT=TimeUnit.SECONDS;
-
+	private static final boolean FLAG_TEST_PRIORITIES=true;
 	/*
 	 * La politica puede ser:
 	 *	0: aleatoria.
@@ -180,14 +180,14 @@ public class Main {
 	
 	public static void setPath() {
 
-		if((System.getProperty("os.name")).equals("Windows 10")){	
-			 if(System.getProperty("user.name").equals("usuario")){
-				 name_file_console="C:\\Users\\usuario\\Desktop\\ProgramacionConcurrente-2018\\Codigo\\src\\logueo\\logFileE.txt";
-			 }
-		}
-		else {
-			name_file_console="./src/logueo/logFileE.txt";
-		}
+			if((System.getProperty("os.name")).equals("Windows 10")){	
+				 if(System.getProperty("user.name").equals("usuario")){
+					 name_file_console="C:\\Users\\usuario\\Desktop\\ProgramacionConcurrente-2018\\Codigo\\src\\logueo\\logFileZ.txt";
+				 }
+			}
+			else {
+				name_file_console="./src/logueo/logFileZ.txt";
+			}
 		
 
 		
