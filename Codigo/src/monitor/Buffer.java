@@ -35,6 +35,7 @@ public class Buffer {
 	public synchronized void delay() throws InterruptedException{
 		this.cantidad_de_hilos_en_cola++;
 		try{
+//			System.out.println("Llgueeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
 			super.wait(); //El hilo entra a la cola, sumando la cantidad de hilos en cola
 		}catch(InterruptedException e){
 			//e.printStackTrace();

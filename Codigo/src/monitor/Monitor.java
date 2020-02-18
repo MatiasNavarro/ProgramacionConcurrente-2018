@@ -24,9 +24,10 @@ public class Monitor {
 		 //Fairness true: FIFO en cola de hilos bloqueados.
 	       mutex=new Semaphore(1,true);
 	       //La red de petri y las transiciones se configuran posteriormente.
-	       this.log=new Logger(4);
+	       this.log=new Logger(5);
 	       this.log.createMessage("Transiciones disparadas: \r\n", 1);
 	       this.log.createMessage("Transiciones disparadas: \r\n", 3);
+	       this.log.createMessage("Transiciones indicada por politica: \r\n", 4);
 		   condicion=true;
 		 
 		   //LogFileA: Evolucion del marcado
@@ -49,7 +50,7 @@ public class Monitor {
 		catch(InterruptedException e){
 			e.printStackTrace();
 		}
-		for(int i=0;i<4;i++){
+		for(int i=0;i<5;i++){
 			log.flushBufferToFile(i);
 		}
 		mutex.release();
@@ -147,8 +148,9 @@ public class Monitor {
 	 * @param transicion Transicion a disparar
 	 */
 	
-	public void dispararTransicion(int transicion) {
+	public void  dispararTransicion(int transicion) {
 		int[] m;
+
 //		if(!condicion)
 //			System.out.println("condicion false");
 		while(condicion){
@@ -160,10 +162,12 @@ public class Monitor {
 				return;
 			}
 			boolean k=true; //Variable booleana de control.  
-		
+			log.setFlagLog(getCondicion());		
 			
-			log.setFlagLog(getCondicion());
-			k=rdp.disparar(transicion); //Disparo red de petri. //Si se logra disparar, k se pone en true.
+			if(politica.checkDisparo(rdp.getSensibilizadasExtendido(),transicion))
+				k=rdp.disparar(transicion); //Disparo red de petri. //Si se logra disparar, k se pone en true.
+			else
+				k=false;
 			
 			
 			
@@ -171,6 +175,7 @@ public class Monitor {
 			//System.out.println(transicion);
 			if(k){ //K=true verifica el estado de la red.
 				int[] Vs=rdp.getSensibilizadasExtendido(); //get transiciones sensibilizadas
+
 				int[] Vc=quienesEstanEnColas(); //get Quienes estan en colas
 				try{
 					m= OperacionesMatricesListas.andVector(Vs, Vc); //Obtengo listaM  (Vs AND Vc)
@@ -182,6 +187,8 @@ public class Monitor {
 				if(OperacionesMatricesListas.isNotAllZeros(m)){ //Hay posibilidad de disparar una transicion.
 					try{
 						int transicionADisparar=politica.cualDisparar(m); //Pregunto a politica 
+						this.log.addMessage(String.valueOf(transicionADisparar), 4);
+						this.log.addMessage("/n", 4);
 						//System.out.println("transicion"+transicionADisparar);
 						colas[transicionADisparar].resume(); //Sale un hilo de una cola de condicion para disparara esa transicion 
 						//Despierta un hilo que estaba bloqueado en la cola correspondiente
@@ -202,6 +209,7 @@ public class Monitor {
 				}
 			}
 			else{
+				
 				mutex.release();
 				try{
 					if(this.rdp.getVectorTransicionesInmediatas()[transicion]==1 ){
@@ -229,8 +237,8 @@ public class Monitor {
 			}
 		
 		
-			//mutex.release(); //Libero al monitor.
-			//return;
+//			mutex.release(); //Libero al monitor.
+//			return;
 		}
 		if(!condicion) {
 			for(int i=0;i<this.cantidad_de_transiciones;i++){

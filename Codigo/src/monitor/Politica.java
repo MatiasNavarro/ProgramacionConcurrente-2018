@@ -150,6 +150,27 @@ public class Politica {
 		
 	}
 	
+	public boolean  checkDisparo(int[]vs, int transicion) {
+		
+		if(this.modo_politica==0){ //Politica aleatoria.
+			return true;
+		}
+		else if(this.modo_politica==1){ //Politica 1: autos eligen piso 1
+			if(vs[6]==1 && vs[7]==1 && transicion == 6)
+				return false;
+			else
+				return true;
+		}
+		else{ //Politica 2: autos eligen salida 2
+			if(transicion == 19 || transicion ==20 )
+				return false;
+			else
+				return true;	
+		}
+
+
+	}
+	
 	
 	
 	

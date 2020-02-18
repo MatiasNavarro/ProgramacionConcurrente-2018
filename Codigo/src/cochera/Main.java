@@ -23,16 +23,16 @@ public class Main {
 	private static String name_file_console="";
 	private static String name_file="";
 	private static final int NUMBER_OF_THREADS=26;
-	private static final int EXECUTION_TIME=50;
+	private static final int EXECUTION_TIME=35;
 	private static final TimeUnit TIME_UNIT=TimeUnit.SECONDS;
 	private static final boolean FLAG_TEST_PRIORITIES=true;
 	/*
 	 * La politica puede ser:
 	 *	0: aleatoria.
-	 *	1: primero los que suben.
-	 *	2: primero los que bajan.
+	 *	1: Primero Piso1. Salida indistinta
+	 *	2: Salida por calle 2.Piso indistinto
 	*/
-	private static final int POLITIC=0;
+	private static final int POLITIC=1;
 	
 	public static void main(String[] args) throws InterruptedException {
 		
@@ -189,24 +189,24 @@ public class Main {
 			if((System.getProperty("os.name")).equals("Windows 10")){	
 				 if(System.getProperty("user.name").equals("usuario")){
 					 name_file="..\\src\\RedesParaTest\\TestTren\\excelTren.xls";
-					 name_file_console="..\\src\\logueo\\logFileE.txt";
+					 name_file_console="..\\src\\logueo\\logFileZ.txt";
 				 }
 			}
 			else {
 				name_file="./src/RedesParaTest/TestTren/excelTren.xls";
-				name_file_console="./src/logueo/logFileE.txt";
+				name_file_console="./src/logueo/logFileZ.txt";
 			}
 		}
 		else{
 			if((System.getProperty("os.name")).equals("Windows 10")){	
 				 if(System.getProperty("user.name").equals("usuario")){
 					 name_file="..\\src\\RedesParaTest\\TestTren\\excelTrenPrioridades.xls";
-					 name_file_console="..\\src\\logueo\\logFileE.txt";
+					 name_file_console="..\\src\\logueo\\logFileZ.txt";
 				 }
 			}
 			else {
 				name_file="./src/RedesParaTest/TestTren/excelTrenPrioridades.xls";
-				name_file_console="./src/logueo/logFileE.txt";
+				name_file_console="./src/logueo/logFileZ.txt";
 			}
 		}
 	}
