@@ -3,7 +3,8 @@ package monitor;
 
 public class Politica { 
 	
-	private int modo_politica;
+	private static int modo_politica;
+	
 	//Modo 0: aleatoria.
     //Modo 1: Primero lleno piso 1
     //Modo 2: Elijo salida 2.
@@ -168,6 +169,29 @@ public class Politica {
 		}
 
 
+	}
+	
+	public static int[] getGuardas(int[] Vs) {
+		int[]c = new int[Vs.length];
+		for (int i=0;i<c.length;i++)
+			c[i]=1;
+		if(modo_politica==0){ //Politica aleatoria.
+//			return true;
+		}
+		else if(modo_politica==1){ //Politica 1: autos eligen piso 1
+			if(Vs[6]==1 && Vs[7]==1)
+				c[6]=0;
+
+		}
+		else{ //Politica 2: autos eligen salida 2
+			if(Vs[19]== 1 || Vs[20] ==1 ) {
+				c[19]=0;
+				c[20]=0;
+			}
+	
+		}
+		return c;
+		
 	}
 	
 }

@@ -164,10 +164,10 @@ public class Monitor {
 			boolean k=true; //Variable booleana de control.  
 			log.setFlagLog(getCondicion());		
 			
-			if(politica.checkDisparo(rdp.getSensibilizadasExtendido(),transicion))
+//			if(politica.checkDisparo(rdp.getSensibilizadasExtendido(),transicion))
 				k=rdp.disparar(transicion); //Disparo red de petri. //Si se logra disparar, k se pone en true.
-			else
-				k=false;
+//			else
+//				k=false;
 			
 			
 			

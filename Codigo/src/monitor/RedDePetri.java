@@ -5,6 +5,7 @@ package monitor;
 import logueo.Logger;
 import util.Parser;
 import util.Data;
+import monitor.Politica;
 
 
 
@@ -55,7 +56,7 @@ public class RedDePetri{
 
 		this.B=getMatrizB_Actualizada(); //Calculo Matriz B
 		this.L=getMatrizL_Actualizada();
-		this.logica_temporal.updateTimeStamp(this.getConjuncionEAndBandL(), this.getConjuncionEAndBandL(),  -1);
+		this.logica_temporal.updateTimeStamp(this.getConjuncionEAndBandLandC(), this.getConjuncionEAndBandLandC(),  -1);
 
 		
 		this.M0=this.M.clone(); //Marcado inicial
@@ -197,11 +198,11 @@ public class RedDePetri{
 		int[][] marcado_siguiente = this.getMarcadoSiguiente(transicion);
 		//System.out.println(this.getSensibilizadasExtendido()[transicion]==1);
 		if (this.getSensibilizadasExtendido()[transicion]==1) {
-			int[] transSensAntesDisparo=this.getConjuncionEAndBandL();
+			int[] transSensAntesDisparo=this.getConjuncionEAndBandLandC();
 			M = marcado_siguiente; //Asignacion del nuevo marcado
 			this.log.addMessage(data.getDiccionario().get(transicion), 3);
 			this.log.addMessage(salto_linea, 3);
-			this.logica_temporal.updateTimeStamp(transSensAntesDisparo, this.getConjuncionEAndBandL(),  transicion);
+			this.logica_temporal.updateTimeStamp(transSensAntesDisparo, this.getConjuncionEAndBandLandC(),  transicion);
 			try{
 				this.verificarPInvariantes(); // En cada disparo se verifica que se cumplan las ecuaciones del P-Invariante
 
@@ -494,9 +495,9 @@ public class RedDePetri{
 
 
 
-		int Z[]= logica_temporal.getVectorZ_Actualizado(this.getConjuncionEAndBandL());
+		int Z[]= logica_temporal.getVectorZ_Actualizado(this.getConjuncionEAndBandLandC());
 
-		Ex=OperacionesMatricesListas.andVector(OperacionesMatricesListas.andVector(OperacionesMatricesListas.andVector(E, Z),this.B),this.L);
+		Ex=OperacionesMatricesListas.andVector(Z,this.getConjuncionEAndBandLandC());
 
 		
 		return Ex;
@@ -507,13 +508,15 @@ public class RedDePetri{
 	 * Metodo getConjuncionEAndBandL
 	 * @return int[] Vector resultante de:  vector E and vector B.
 	 */
-	public int[] getConjuncionEAndBandL(){
+	public int[] getConjuncionEAndBandLandC(){
 		int E[]= this.getSensibilizadas();
 
 
 		int aux[] = OperacionesMatricesListas.andVector(this.B,E);
 
-		int q[]= OperacionesMatricesListas.andVector(aux,this.L);
+		aux= OperacionesMatricesListas.andVector(aux,this.L);
+		
+		int q[] = OperacionesMatricesListas.andVector(aux, Politica.getGuardas(aux));
 
 		return q;
 	}
