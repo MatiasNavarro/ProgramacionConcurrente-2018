@@ -72,6 +72,7 @@ public class Monitor {
 			e.printStackTrace();
 		}
 		this.rdp=RedDePetri.getInstance();
+		this.rdp.configLogicaTemporal();
 		this.rdp.setLogEventos(this.log);
 		this.cantidad_de_transiciones=rdp.getCantTransiciones();
 		

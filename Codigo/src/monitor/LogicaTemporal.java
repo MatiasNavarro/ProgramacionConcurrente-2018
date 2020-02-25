@@ -17,7 +17,7 @@ public class LogicaTemporal {
 	private int [] vector_z; //Contiene un uno si el contador esta entre alfa y beta. De lo contrario un cero.
 	
 	
-	/**
+    /**
 	 * Constructor de LogicaTemporal, se inicializan las variables (Arreglos y Matrices) segun la cantidad de transiciones de la red.
 	 * @param cantidad_de_transiciones cantidad de transiciones de la red.
 	 */
@@ -33,11 +33,11 @@ public class LogicaTemporal {
 	
 	
 	/**
-	 * Metodo setVectorIntervalosFromExcel.
-	 * @param libroExcel Libro de Excel en cuya hoja 9 se encuentran los vectores que contienen los valores de alfa y beta de las transiciones.
-	 */
-	public void setVectorIntervalosFromExcel(String path){
-		
+	 * Metodo setVectorIntervalos.
+	 * se setea el vector que contienen los valores de alfa y beta de las transiciones.
+	 * @param flag, boolean que nos indicara si el programa sera considerando logica temporal o no. 
+	 */ 
+	public void setVectorIntervalos(boolean flag){
 		 this.vector_de_intervalos = new int[this.cantidad_de_transiciones][2];
 		 for (int i = 0; i < this.cantidad_de_transiciones; i++) {
 		     for (int j = 0; j < 2; j++) {
@@ -46,17 +46,14 @@ public class LogicaTemporal {
 		    	 else
 		    		 this.vector_de_intervalos [i][j]=-1;
 		     }
-		     
-		     
-		     this.vector_de_intervalos[15][0]=3000;
-		     this.vector_de_intervalos[15][1]=-1;
-		     this.vector_de_intervalos[16][0]=3000;
-		     this.vector_de_intervalos[16][1]=-1;
 		 }
-
-		
+		 if(flag) {
+		 this.vector_de_intervalos[15][0]=3000;
+	     this.vector_de_intervalos[15][1]=-1;
+	     this.vector_de_intervalos[16][0]=3000;
+	     this.vector_de_intervalos[16][1]=-1;
+		 }
 	}
-	
 	
 	/**
 	 * Metodo getVectorDeIntervalos

@@ -14,7 +14,9 @@ import java.util.concurrent.TimeUnit;
 
 
 import monitor.Cronometro;
+import monitor.LogicaTemporal;
 import monitor.Monitor;
+import monitor.RedDePetri;
 import util.Data;
 
 
@@ -25,12 +27,15 @@ public class Main {
 	private static final int EXECUTION_TIME=35;
 	private static final TimeUnit TIME_UNIT=TimeUnit.SECONDS;
 	private static final boolean FLAG_TEST_PRIORITIES=true;
+	private static final boolean FLAG_LOGICA=false;
+	
 	/*
 	 * La politica puede ser:
 	 *	0: aleatoria.
 	 *	1: Primero Piso1. Salida indistinta
 	 *	2: Salida por calle 2.Piso indistinto
 	*/
+	
 	private static final int POLITIC=1;
 	
 	public static void main(String[] args) throws InterruptedException {
@@ -58,12 +63,14 @@ public class Main {
 		
 		
 		Monitor monitor=Monitor.getInstance(); //Patron Singleton
+		RedDePetri rdp = RedDePetri.getInstance();
+		rdp.setFlagLogica(FLAG_LOGICA);
+		
 		monitor.configRdp(name_file); //Configuro la red de petri para el monitor segun el path.
 		
 		
 		
 		monitor.setPolitica(POLITIC);
-		
 		
 		int cant_transiciones=monitor.getCantTransiciones();
 		if(cant_transiciones==0){

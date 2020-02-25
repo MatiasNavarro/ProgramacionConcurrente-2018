@@ -26,6 +26,7 @@ public class RedDePetri{
 	private int[] L;
 	private int[][] R;
 	private LogicaTemporal logica_temporal;
+	private boolean flagLogica;
 	private int[] transiciones_inmediatas; //Un uno indica que la transicion es inmediata.
 	private Logger log;
 
@@ -50,13 +51,8 @@ public class RedDePetri{
 
 		setCantTransiciones(I[1].length);
 
-		logica_temporal=new LogicaTemporal(this.getCantTransiciones());
-		this.logica_temporal.setVectorIntervalosFromExcel(this.path); //Seteo intervalos 
-		setTransicionesInmediatas();
-
 		this.B=getMatrizB_Actualizada(); //Calculo Matriz B
 		this.L=getMatrizL_Actualizada();
-		this.logica_temporal.updateTimeStamp(this.getConjuncionEAndBandLandC(), this.getConjuncionEAndBandLandC(),  -1);
 
 		
 		this.M0=this.M.clone(); //Marcado inicial
@@ -108,6 +104,16 @@ public class RedDePetri{
 
 	public void setTransicionesInmediatas(){
 		this.transiciones_inmediatas=this.logica_temporal.construirVectorTransicionesInmediatas();
+	}
+	
+	public void setFlagLogica(boolean f) {
+		this.flagLogica=f;
+	}
+	public void configLogicaTemporal() {
+		logica_temporal=new LogicaTemporal(this.getCantTransiciones());
+		this.logica_temporal.setVectorIntervalos(flagLogica); //Seteo intervalos 
+		setTransicionesInmediatas();
+		this.logica_temporal.updateTimeStamp(this.getConjuncionEAndBandLandC(), this.getConjuncionEAndBandLandC(),  -1);
 	}
 
 
@@ -200,6 +206,10 @@ public class RedDePetri{
 		if (this.getSensibilizadasExtendido()[transicion]==1) {
 			int[] transSensAntesDisparo=this.getConjuncionEAndBandLandC();
 			M = marcado_siguiente; //Asignacion del nuevo marcado
+			
+			//imprimo en consola lo que guardo en logD
+			System.out.println(data.getDiccionario().get(transicion) + " nro: "+ transicion + salto_linea);
+			
 			this.log.addMessage(data.getDiccionario().get(transicion), 3);
 			this.log.addMessage(salto_linea, 3);
 			this.logica_temporal.updateTimeStamp(transSensAntesDisparo, this.getConjuncionEAndBandLandC(),  transicion);

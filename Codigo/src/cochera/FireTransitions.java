@@ -36,7 +36,7 @@ public class FireTransitions implements Runnable {
     	while(monitor.getCondicion()) {
     		for(int i=0; i<this.transitions_to_fire.length; i++) {
     			monitor.dispararTransicion(this.transitions_to_fire[i]);
-    			System.out.println(data.getDiccionario().get(transitions_to_fire[i]));
+    			//System.out.println(data.getDiccionario().get(transitions_to_fire[i]));
     			this.log.println(data.getDiccionario().get(transitions_to_fire[i]));
     	       
     		}
