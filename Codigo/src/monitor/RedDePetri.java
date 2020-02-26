@@ -222,7 +222,7 @@ public class RedDePetri{
 				//Logueo el contador de transiciones disparadas
 				this.log.createMessage("Cantidad de transiciones disparadas:"+salto_linea+String.valueOf(this.contadorTransicionesDisparadas), 2);
 				//Logueo la transicion disparada
-				this.log.addMessage(String.valueOf(transicion)+ new String("/n"), 1);
+				this.log.addMessage(String.valueOf(transicion)+ new String("\n"), 1);
 
 			}
 			catch(Exception e){

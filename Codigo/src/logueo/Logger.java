@@ -31,7 +31,7 @@ public class Logger {
 				  		   
 			    	if((System.getProperty("os.name")).equals("Windows 10")){	
 			    		 if(System.getProperty("user.name").equals("usuario")){
-			    			 this.name_files[i]="..\\src\\logueo\\logFile"+ this.getLetraAbecedario(i) +".txt"; 
+			    			 this.name_files[i]="C:\\Users\\usuario\\Desktop\\ProgramacionConcurrente-2018\\Codigo\\src\\logueo\\logFile"+ this.getLetraAbecedario(i) +".txt";
 						 }
 			    	}
 			    	else{
