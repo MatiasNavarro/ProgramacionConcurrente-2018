@@ -118,6 +118,15 @@ public class TinvarianteTester {
 		for(int k=0; k < veces.length; k++) {
 			System.out.println("Ec"+k+" se repite "+veces[k]+" veces");
 		}
+		int q=0;
+		int h=0;
+		while(disparadas.length() != q) {
+			if(disparadas.charAt(q) != ' ') {
+				h++;
+			}
+			q++;
+		}
+		System.out.println("Sobraron "+h+" transiciones");
 	}
 
 	//Metodo que carga las transiciones disparadas en formato String
