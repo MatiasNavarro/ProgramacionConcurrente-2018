@@ -131,14 +131,25 @@ public class TinvarianteTester {
 
 	//Metodo que carga las transiciones disparadas en formato String
 	public void cargarDisparadas() {
-		File fichero = new File("C:\\Users\\usuario\\Desktop\\ProgramacionConcurrente-2018\\Codigo\\src\\logueo\\logFileB.txt");
+		String path = "";
+		
+		if((System.getProperty("os.name")).equals("Windows 10")){	
+			 if(System.getProperty("user.name").equals("usuario")){
+				 path = "C:\\Users\\usuario\\Desktop\\ProgramacionConcurrente-2018\\Codigo\\src\\logueo\\logFileB.txt";
+				 
+			 }
+		}
+		else {
+			path = "./src/logueo/logFileB.txt";
+		}
+		
+		File fichero = new File(path);
 		Scanner s = null;
-
+		
 		try {
 			// Leemos el contenido del fichero
 			//System.out.println("... Leemos el contenido del fichero ...");
 			s = new Scanner(fichero);
-
 			// Leemos linea a linea el fichero
 			while (s.hasNextLine()) {
 				String linea = s.nextLine(); 	// Guardamos la linea en un String
@@ -177,7 +188,9 @@ public class TinvarianteTester {
 				}
 			}
 
-		} catch (Exception ex) {
+		}
+		
+		catch (Exception ex) {
 			System.out.println("Mensaje: " + ex.getMessage());
 		} finally {
 			// Cerramos el fichero tanto si la lectura ha sido correcta o no
