@@ -14,7 +14,6 @@ import java.util.concurrent.TimeUnit;
 
 
 import monitor.Cronometro;
-import monitor.LogicaTemporal;
 import monitor.Monitor;
 import monitor.RedDePetri;
 import util.Data;
@@ -28,7 +27,7 @@ public class Main {
 	private static final int EXECUTION_TIME=15;
 	private static final TimeUnit TIME_UNIT=TimeUnit.SECONDS;
 	private static final boolean FLAG_TEST_PRIORITIES=true;
-	private static final boolean FLAG_LOGICA=false;
+	private static final boolean FLAG_LOGICA=true;
 	
 	/*
 	 * La politica puede ser:
@@ -174,8 +173,10 @@ public class Main {
         System.out.format("Finalizo la ejecucion del simulador en: %f minutos.",(double)tiempo_transcurrido.getSeconds()/(double)60);
         
         fileStream.format("\nQuedaron %d tareas por finalizar.",executor.getActiveCount());
-        System.out.format("\nQuedaron %d tareas por finalizar.",executor.getActiveCount());
+        System.out.format("\nQuedaron %d tareas por finalizar.\n",executor.getActiveCount());
+        
         TinvarianteTester testerr = new TinvarianteTester();
+        
         System.exit(0);
 	}
 	
