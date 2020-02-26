@@ -144,7 +144,19 @@ public class TinvarianteTester {
 
 	//Metodo que carga las transiciones disparadas en formato String
 	public void cargarDisparadas() {
-		File fichero = new File("C:\\Users\\usuario\\Desktop\\ProgramacionConcurrente-2018\\Codigo\\src\\logueo\\logFileB.txt");
+		String path = "";
+
+		if((System.getProperty("os.name")).equals("Windows 10")){
+		if(System.getProperty("user.name").equals("usuario")){
+		path = "C:\\Users\\usuario\\Desktop\\ProgramacionConcurrente-2018\\Codigo\\src\\logueo\\logFileB.txt";
+
+		}
+		}
+		else {
+		path = "./src/logueo/logFileB.txt";
+		}
+
+		File fichero = new File(path);
 		Scanner s = null;
 
 		try {
