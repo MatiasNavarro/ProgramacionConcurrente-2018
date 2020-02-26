@@ -17,6 +17,7 @@ public class TinvarianteTester {
 	private int i;
 	private String [] ecuaciones;
 	private int veces []; //vector que contiene cuantas veces se repite cada T-inv
+	private int vectorCorte [];
 	private String ec0;
 	private String ec1;
 	private String ec2;
@@ -48,6 +49,7 @@ public class TinvarianteTester {
 		ec10 = new String ("w t u o p a s 1 d h k 3 c b");
 		ec11 = new String ("e y u o p a s 1 d h k 3 c b");
 		ec12 = new String ("n m");
+		vectorCorte = new int[] {1,1,1,1,1,1,1,1,1,1,1,1,1};
 		
 		ecuaciones = new String[] {ec0, ec1, ec2, ec3, ec4, ec5, ec6, ec7, ec8, ec9, ec10, ec11, ec12};
 		cargarDisparadas();
@@ -97,24 +99,35 @@ public class TinvarianteTester {
 	public void testear() {
 		char c;
 		String regex;
-		for(int h=0; h < 200; h++) {
-		for(int j=0; j < ecuaciones.length; j++) {
-			c = ecuaciones[j].charAt(0);
-			regex = "\\b"+new String (Character.toString(c))+"\\b";
-			general(disparadas, regex, ecuaciones[j]);
-			if(i != 0) {  //si i es distinto de cero significa q no encontro toda la secuencia de la ecuacion
-				//System.out.println("La ecuacion "+j+" quedo incompleta");
-				i=0;
+		while(!todosCeros(vectorCorte)) { //mientras no sean todos ceros sigue buscando T-invariantes, cuando sean todos ceros deja de buscar 
+			for(int j=0; j < ecuaciones.length; j++) {
+				c = ecuaciones[j].charAt(0);
+				regex = "\\b"+new String (Character.toString(c))+"\\b";
+				general(disparadas, regex, ecuaciones[j]);
+				if(i == 0) {  //si i=0 encontro la secuencia completa entonces aumento el contador de veces
+					veces[j]++;
+				}
+				else { //si i es distinto de cero significa q no encontro toda la secuencia de la ecuacion o ya no hay transiciones de esa ecuacion
+					//System.out.println("La ecuacion "+j+" quedo incompleta");
+					vectorCorte[j] = 0;
+					i=0;
+				}
 			}
-			else { //entonces si i=0 encontro la secuencia completa y aumento
-				veces[j]++;
-			}
-		}
 		}
 	}
 	
+	//si devuelve true es porque todos los valores del vector son cero
+	public boolean todosCeros(int [] v) {
+		int suma = 0;
+		for(int k=0; k < v.length; k++) {
+			suma = suma + v[k];
+		}
+		if(suma == 0) return true;
+		else return false;
+	}
+	
 	public void imprimoResultados() {
-		//System.out.println(disparadas);
+		System.out.println(disparadas);
 		for(int k=0; k < veces.length; k++) {
 			System.out.println("Ec"+k+" se repite "+veces[k]+" veces");
 		}
@@ -131,25 +144,14 @@ public class TinvarianteTester {
 
 	//Metodo que carga las transiciones disparadas en formato String
 	public void cargarDisparadas() {
-		String path = "";
-		
-		if((System.getProperty("os.name")).equals("Windows 10")){	
-			 if(System.getProperty("user.name").equals("usuario")){
-				 path = "C:\\Users\\usuario\\Desktop\\ProgramacionConcurrente-2018\\Codigo\\src\\logueo\\logFileB.txt";
-				 
-			 }
-		}
-		else {
-			path = "./src/logueo/logFileB.txt";
-		}
-		
-		File fichero = new File(path);
+		File fichero = new File("C:\\Users\\usuario\\Desktop\\ProgramacionConcurrente-2018\\Codigo\\src\\logueo\\logFileB.txt");
 		Scanner s = null;
-		
+
 		try {
 			// Leemos el contenido del fichero
 			//System.out.println("... Leemos el contenido del fichero ...");
 			s = new Scanner(fichero);
+
 			// Leemos linea a linea el fichero
 			while (s.hasNextLine()) {
 				String linea = s.nextLine(); 	// Guardamos la linea en un String
@@ -188,9 +190,7 @@ public class TinvarianteTester {
 				}
 			}
 
-		}
-		
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			System.out.println("Mensaje: " + ex.getMessage());
 		} finally {
 			// Cerramos el fichero tanto si la lectura ha sido correcta o no
