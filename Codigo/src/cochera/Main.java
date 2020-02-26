@@ -18,13 +18,14 @@ import monitor.LogicaTemporal;
 import monitor.Monitor;
 import monitor.RedDePetri;
 import util.Data;
+import t_invariante_test.TinvarianteTester;
 
 
 public class Main {
 	private static String name_file_console="";
 	private static String name_file="";
 	private static final int NUMBER_OF_THREADS=17;
-	private static final int EXECUTION_TIME=35;
+	private static final int EXECUTION_TIME=15;
 	private static final TimeUnit TIME_UNIT=TimeUnit.SECONDS;
 	private static final boolean FLAG_TEST_PRIORITIES=true;
 	private static final boolean FLAG_LOGICA=false;
@@ -174,6 +175,7 @@ public class Main {
         
         fileStream.format("\nQuedaron %d tareas por finalizar.",executor.getActiveCount());
         System.out.format("\nQuedaron %d tareas por finalizar.",executor.getActiveCount());
+        TinvarianteTester testerr = new TinvarianteTester();
         System.exit(0);
 	}
 	
