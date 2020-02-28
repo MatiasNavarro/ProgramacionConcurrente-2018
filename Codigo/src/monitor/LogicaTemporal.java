@@ -81,7 +81,7 @@ public class LogicaTemporal {
 		if(t_a_disparar==-1) { // Se indica el nicio de red con -1 en el parametro transicion a disparar (no se dispara ninguna t)
 			for (int transicion = 0; transicion < this.cantidad_de_transiciones; transicion++) {
 				if(t_sensibilizadas_antes_disparar[transicion]==1) {
-					this.vector_de_time_stamps[transicion].setNuevoTimeStamp();
+					this.vector_de_time_stamps[transicion].setTimeStamp();
 				}
 
 			}
@@ -94,8 +94,8 @@ public class LogicaTemporal {
 		for (int transicion = 0; transicion < this.cantidad_de_transiciones; transicion++) { //Se recorren todas las transiciones
 			
 			if(t_sensibilizadas_antes_disparar[transicion]==1 && t_sensibilizadas_despues_disparar[transicion]==1) { //Si la transicion se encontraba sensibilizada antes del disparo y sigue sensibilizada despues de disparar, no se resetea el contador de la misma 
-				if(transicion==t_a_disparar) { //A MENOS QUE justamente sea esa la transicion disparada (tiene que reinizializar su cronometro)
-					this.vector_de_time_stamps[transicion].setNuevoTimeStamp();
+				if(!(transicion==t_a_disparar)) { //A MENOS QUE justamente sea esa la transicion disparada (tiene que reinizializar su cronometro)
+					this.vector_de_time_stamps[transicion].setTimeStamp();
 				}
 			}
 			
@@ -107,7 +107,7 @@ public class LogicaTemporal {
 			
 			//Si no estaba sensibilizada y despues de disparar si lo esta, se inicia la cuenta del cronometro alfa con setNuevoTimeStamp.
 			else if(t_sensibilizadas_antes_disparar[transicion]==0 && t_sensibilizadas_despues_disparar[transicion]==1) {
-				this.vector_de_time_stamps[transicion].setNuevoTimeStamp();
+				this.vector_de_time_stamps[transicion].setTimeStamp();
 			}
 			
 			//Si no estaba sensibilizada y sigue sin estarlo despues del disparo, no se empieza la cuenta del cronometro alfa.
@@ -116,7 +116,7 @@ public class LogicaTemporal {
 			}
 		
 		}
-		this.updateVectorZ(t_sensibilizadas_despues_disparar); // (E AND B)
+		this.updateVectorZ(t_sensibilizadas_despues_disparar); // (E AND B AND L AND C)
 	}
 	
 	
@@ -161,10 +161,14 @@ public class LogicaTemporal {
 			throw new IllegalArgumentException("Transicion invalida");	
 		}
 		
+		//Comparaciones necesarias para verificar si una transicion esta en su intervalo de disparo
 		boolean comparacion1=this.vector_de_time_stamps[transicion].getMillis()>=(long)vector_de_intervalos[transicion][0];
 		boolean comparacion2=this.vector_de_time_stamps[transicion].getMillis()<=(long)vector_de_intervalos[transicion][1];
+		
+		//Comparaciones necesarias para saber si es una transicion inmediatas
 		boolean comparacion3=(long)vector_de_intervalos[transicion][1]==(long)-1;
 		boolean comparacion4=(long)vector_de_intervalos[transicion][0]==0;
+		
 		if((comparacion1&&(comparacion2||comparacion3))||construirVectorTransicionesInmediatas()[transicion]==1||comparacion4) {
 			return true;
 		}
@@ -211,8 +215,10 @@ public class LogicaTemporal {
 		
 		boolean comparacion1=this.vector_de_time_stamps[transicion].getMillis()>=(long)vector_de_intervalos[transicion][0];
 		boolean comparacion2=this.vector_de_time_stamps[transicion].getMillis()<=(long)vector_de_intervalos[transicion][1];
+		
 		boolean comparacion3=(long)vector_de_intervalos[transicion][1]==(long)-1;
 		boolean comparacion4=(long)vector_de_intervalos[transicion][0]==0;
+		
 		if((comparacion1&&(comparacion2||comparacion3))||construirVectorTransicionesInmediatas()[transicion]==1||comparacion4) {
 			return 0;
 		}

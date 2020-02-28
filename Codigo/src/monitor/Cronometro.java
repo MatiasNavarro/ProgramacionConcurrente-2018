@@ -20,7 +20,7 @@ public class Cronometro{
     * (Estampa de tiempo)
     */
 
-    public void setNuevoTimeStamp() {
+    public void setTimeStamp() {
     	contador = System.currentTimeMillis();
     }
     

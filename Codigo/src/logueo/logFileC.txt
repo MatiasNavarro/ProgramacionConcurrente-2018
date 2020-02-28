@@ -1,1 +1,2 @@
-Cantidad de transiciones disparadas:null207
+Cantidad de transiciones disparadas:
+566

@@ -20,10 +20,10 @@ public class Main {
 	private static String name_file_console="";
 	private static String name_file="";
 	private static final int NUMBER_OF_THREADS=17;
-	private static final int EXECUTION_TIME=15;
+	private static final int EXECUTION_TIME=50;
 	private static final TimeUnit TIME_UNIT=TimeUnit.SECONDS;
-	private static final boolean FLAG_LOGICA=false; //FLAG_LOGICA = true (temporal) - FLAG_LOGICA = false (inmediata)
-	private static final int POLITIC=1;
+	private static final boolean FLAG_LOGICA=true; //FLAG_LOGICA = true (temporal) - FLAG_LOGICA = false (inmediata)
+	private static final int POLITIC=0;
 	/*
 	 * La politica puede ser:
 	 *	0: Aleatoria.
@@ -49,7 +49,7 @@ public class Main {
 		 * @param Tiempo_transcurrido: variable Cronometro para imprimir tiempo transcurrido desde el inicio del programa.
 		 */
 		Cronometro tiempo_transcurrido = new Cronometro();
-		tiempo_transcurrido.setNuevoTimeStamp();
+		tiempo_transcurrido.setTimeStamp();
 		
 		Monitor monitor=Monitor.getInstance(); 		//Patron Singleton
 		RedDePetri rdp = RedDePetri.getInstance();

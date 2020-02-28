@@ -1,4 +1,3 @@
-Transiciones disparadas: 
 Un auto llega a la barrera de entrada 1
 Un auto llega a la barrera de entrada 2
 Un auto llega a la barrera de entrada 3
@@ -565,3 +564,31 @@ Un auto atraviesa la barrera 3
 Prender cartel "No Hay Lugar"
 Un auto elige piso 1 
 Un auto va a la cola de la caja(auto piso 1)
+Un auto llega a la barrera de la salida 2
+Apagar cartel
+Un auto elige piso 2
+Un auto llega a la barrera de la salida 1
+Un auto sale por salida 1
+Un auto elige salida 1 (auto piso 2)
+Un auto sube la rampa
+Un auto llega a la barrera de entrada 1
+Un auto va a la cola de la caja(auto piso 2)
+Un auto llega a la barrera de entrada 2
+Un auto atraviesa la barrera 2
+Un auto paga (auto piso 1)
+Un auto sale de la caja(auto piso 1)
+Un auto sale de la caja(auto piso 2)
+Un auto elige piso 1 
+Un auto baja la rampa
+Un auto desocupo la rampa
+Un auto elige salida 2 (auto piso 1)
+Un auto atraviesa la barrera 1
+Un auto estaciona en el piso 2
+Un auto elige salida 1 (auto piso 1)
+Un auto va a la cola de la caja(auto piso 1)
+Un auto llega a la barrera de entrada 3
+Un auto atraviesa la barrera 3
+Un auto en la calle
+Un auto salio por salida 2
+Finalizo la ejecucion del simulador en: 0.833333 minutos.
+Quedaron 0 tareas por finalizar.

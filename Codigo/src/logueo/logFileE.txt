@@ -1,31 +1,236 @@
-Un auto llega a la barrera de entrada 1
-Un auto llega a la barrera de entrada 2
-Un auto llega a la barrera de entrada 3
-Un auto atraviesa la barrera 1
-Un auto atraviesa la barrera 2
-Un auto atraviesa la barrera 3
-Un auto elige piso 2
-Un auto llega a la barrera de la salida 2
-Un auto va a la cola de la caja(auto piso 2)
-Un auto salio por salida 2
-Un auto va a la cola de la caja(auto piso 1)
-Un auto elige salida 2 (auto piso 2)
-Un auto llega a la barrera de la salida 1
-Un auto paga (auto piso 1)
-Un auto sale de la caja(auto piso 1)
-Un auto sale por salida 1
-Prender cartel "No Hay Lugar"
-Apagar cartel
-Un auto en la calle
-Un auto sube la rampa
-Un auto estaciona en el piso 2
-Un auto elige salida 1 (auto piso 2)
-Un auto elige salida 2 (auto piso 1)
-Un auto baja la rampa
-Un auto paga (auto piso 2)
-Un auto sale de la caja(auto piso 2)
-Un auto desocupo la rampa
-Un auto elige salida 1 (auto piso 1)
-Un auto llega a la barrera de entrada 1
-Un auto atraviesa la barrera 1
-Un auto elige piso 1 
+Transiciones indicada por politica: 
+7
+6
+13
+8
+14
+10
+7
+13
+10
+7
+13
+8
+26
+7
+13
+8
+6
+10
+10
+6
+10
+7
+10
+13
+8
+26
+7
+13
+10
+6
+8
+26
+6
+8
+10
+6
+10
+6
+10
+7
+10
+13
+7
+10
+13
+10
+24
+7
+13
+26
+8
+26
+8
+26
+8
+26
+8
+10
+26
+8
+26
+8
+10
+10
+10
+10
+8
+26
+8
+10
+8
+26
+10
+8
+26
+10
+8
+26
+10
+8
+26
+10
+8
+26
+10
+8
+26
+10
+8
+26
+10
+8
+26
+10
+8
+26
+10
+26
+8
+8
+26
+10
+10
+26
+26
+12
+17
+19
+28
+23
+25
+0
+2
+1
+24
+7
+6
+13
+8
+10
+26
+19
+17
+27
+23
+25
+1
+6
+8
+10
+26
+14
+17
+28
+23
+25
+2
+24
+6
+8
+10
+26
+18
+28
+23
+25
+1
+7
+13
+20
+12
+27
+23
+25
+0
+7
+13
+12
+19
+17
+27
+23
+25
+0
+2
+1
+24
+6
+7
+8
+13
+10
+26
+17
+28
+23
+25
+0
+24
+6
+8
+10
+26
+14
+19
+27
+23
+25
+2
+24
+6
+8
+10
+26
+14
+14
+20
+12
+27
+23
+25
+2
+0
+1
+24
+6
+7
+8
+13
+10
+26
+12
+20
+27
+23
+25
+1
+2
+0
+24
+6
+7
+8
+13
+10
+26
+12
+20
+27
+23
+25
+2
+24
+7
+13

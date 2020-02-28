@@ -48,6 +48,10 @@ public class Politica {
 				indice = 24;
 				return indice;
 			}
+			if(lista_m[23] == 1) {
+				indice = 23;
+				return indice;
+			}
 			while(flag){
 				int numero_aleatorio = (int) (Math.random()*100);
 				indice=numero_aleatorio % lista_m.length; //Defino una posicion aleatoria.

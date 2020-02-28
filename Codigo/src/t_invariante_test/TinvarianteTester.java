@@ -127,7 +127,7 @@ public class TinvarianteTester {
 	}
 	
 	public void imprimoResultados() {
-		System.out.println(disparadas);
+//		System.out.println(disparadas);
 		for(int k=0; k < veces.length; k++) {
 			System.out.println("Ec"+k+" se repite "+veces[k]+" veces");
 		}
