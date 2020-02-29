@@ -187,7 +187,7 @@ public class Monitor {
 				}	
 				if(OperacionesMatricesListas.isNotAllZeros(m)){ //Hay posibilidad de disparar una transicion.
 					try{
-						int transicionADisparar=politica.cualDisparar(m); //Pregunto a politica 
+						int transicionADisparar=politica.politicaAleatoria(m); //Pregunto a politica 
 						this.log.addMessage(String.valueOf(transicionADisparar), 4);
 						String salto_linea="\n";
 						this.log.addMessage(salto_linea, 4);

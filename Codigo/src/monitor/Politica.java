@@ -40,7 +40,7 @@ public class Politica {
 	 * @param flagInmediatas boolean que indica si existen transiciones inmediatas con posibilidad de dispararse. 
 	 * @return int indice que representa a la transicion a disparar del vector de transiciones
 	 */
-	private int politicaAleatoria(int[] lista_m){
+	public int politicaAleatoria(int[] lista_m){
 	
 			int indice=0;
 			boolean flag=true;
@@ -73,7 +73,7 @@ public class Politica {
 	 * @param lista_m lista que contiene los enteros 1 y 0, representando con el 1 las transiciones que se pueden disparar.
 	 * @return int indice que representa a la transicion a disparar del vector de transiciones
 	 */
-	private int politica1(int[] lista_m){
+	/*private int politica1(int[] lista_m){
 		
 		int indice;	
 		if(lista_m[24] == 1) {
@@ -92,7 +92,7 @@ public class Politica {
 		    return this.politicaAleatoria(lista_m); //Si no esta definida la prioridad, se utiliza la aleatoriedad.
 			
 	
-	}
+	}*/
 	
 	/**
 	 * Metodo politica2. Implementa la decision de cual disparar en base a darle prioridad a la salida 2 sobre la 1.
@@ -100,8 +100,8 @@ public class Politica {
 	 * @param lista_m lista que contiene los enteros 1 y 0, representando con el 1 las transiciones que se pueden disparar.
 	 * @return int indice que representa a la transicion a disparar del vector de transiciones
 	 */
-	private int politica2(int[] lista_m){
-		
+	/*private int politica2(int[] lista_m){
+		System.out.println("-------------------------------------------------------------------------------------------------------------");
 		int indice;	
 		if(lista_m[24] == 1) {
 				indice = 24;
@@ -116,7 +116,7 @@ public class Politica {
 		}
 		
 		return this.politicaAleatoria(lista_m); 
-	}
+	}*/
 	
 	
 	
@@ -126,7 +126,7 @@ public class Politica {
 	 * @return int indice que representa a la transicion a disparar del vector de transiciones
 	 * @throws IndexOutOfBoundsException en caso de que lista_m sea una lista vacia.
 	 */
-	public int cualDisparar(int[] lista_m) throws IndexOutOfBoundsException{
+	/*public int cualDisparar(int[] lista_m) throws IndexOutOfBoundsException{
 		if(lista_m.length>0){
 			if(this.modo_politica==0){ //Politica aleatoria.
 				return politicaAleatoria(lista_m);
@@ -147,7 +147,7 @@ public class Politica {
 		
 		
 		
-	}
+	}*/
 	
 	/**
 	 * Metodo checkDisparo. Metodo que devuelve false en caso de que la transicion a disparar sea sobre la cual se desensibiliza mediante la politica.
