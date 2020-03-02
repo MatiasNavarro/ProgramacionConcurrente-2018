@@ -54,28 +54,17 @@ public class TinvarianteTester {
 		ecuaciones = new String[] {ec0, ec1, ec2, ec3, ec4, ec5, ec6, ec7, ec8, ec9, ec10, ec11, ec12};
 		cargarDisparadas();
 		testear();
-		imprimoResultados();
 	}
 
 			
-			/**
-			 * Si algun elemento del array es 1 significa que todavia
-			 * falta seguir buscando
-			 * @param array
-			 * @return
-			 */
-			/*public boolean verificoArray(int j) {
-				for(int k=0; k < array.length; k++) {
-					if(array[k] == 1) {
-						return true;
-					}
-				}
-				return false;
-			}*/
-			
-			
+	/**
+	 * Metodo busqueda. Busca transicion por transicion la ecuacion de T-inv en el vector de disparadas
+	 * @param cad transciones disparadas en el transcurso del programa
+	 * @param regex transicion a buscar en cad
+	 * @param ec ecuacion de T-inv a buscar en cad
+	 */		
 	//cad=cadena de disparo / regex=transicion a buscar / ec=ecuacion T-inv
-	public void general (String cad, String regex, String ec) {
+	public void busqueda (String cad, String regex, String ec) {
 		Pattern pattern = Pattern.compile(regex);
 	    Matcher matcher = pattern.matcher(cad);
 	    
@@ -89,13 +78,15 @@ public class TinvarianteTester {
 	    	else {
 	    		char c = ec.charAt(i);  //obtengo la prox. transicion
 	    		regex = Character.toString(c);  //la paso a formato String
-	            general(cad, regex, ec);  //llamada recursiva
+	            busqueda(cad, regex, ec);  //llamada recursiva
 	    	}
 	    }
 	    else i=1;
 	}
 	
-
+	/**
+	 * Metodo testear. Busca las ecuaciones de T-inv y anota cuantas veces se repiten
+	 */
 	public void testear() {
 		char c;
 		String regex;
@@ -103,7 +94,7 @@ public class TinvarianteTester {
 			for(int j=0; j < ecuaciones.length; j++) {
 				c = ecuaciones[j].charAt(0);
 				regex = "\\b"+new String (Character.toString(c))+"\\b";
-				general(disparadas, regex, ecuaciones[j]);
+				busqueda(disparadas, regex, ecuaciones[j]);
 				if(i == 0) {  //si i=0 encontro la secuencia completa entonces aumento el contador de veces
 					veces[j]++;
 				}
@@ -116,7 +107,12 @@ public class TinvarianteTester {
 		}
 	}
 	
-	//si devuelve true es porque todos los valores del vector son cero
+	
+	/**
+	 * Metodo todosCeros. Permite saber si los valores del arreglo que se le pasa son todos ceros
+	 * @param v vector de enteros 
+	 * @return boolean true si todos los valores del vector son cero, false en caso contrario
+	 */
 	public boolean todosCeros(int [] v) {
 		int suma = 0;
 		for(int k=0; k < v.length; k++) {

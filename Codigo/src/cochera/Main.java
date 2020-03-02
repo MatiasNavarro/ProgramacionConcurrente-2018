@@ -23,7 +23,7 @@ public class Main {
 	private static final int EXECUTION_TIME=15;
 	private static final TimeUnit TIME_UNIT=TimeUnit.SECONDS;
 	private static final boolean FLAG_LOGICA=false; //FLAG_LOGICA = true (temporal) - FLAG_LOGICA = false (inmediata)
-	private static final int POLITIC=1;
+	private static final int POLITIC=2;
 	/*
 	 * La politica puede ser:
 	 *	0: Aleatoria.
@@ -130,6 +130,7 @@ public class Main {
         System.out.format("\nQuedaron %d tareas por finalizar.\n",executor.getActiveCount());
         
         TinvarianteTester tester = new TinvarianteTester();
+        tester.imprimoResultados();
         
         System.exit(0);
 	}
