@@ -17,7 +17,9 @@ public class TinvarianteTester {
 	private int i;
 	private String [] ecuaciones;
 	private int veces []; //vector que contiene cuantas veces se repite cada T-inv
+	private int vecesParciales []; //vector que contiene cuantas veces se repite cada T-inv
 	private int vectorCorte [];
+	private int vectorCorte2 [];
 	private String ec0;
 	private String ec1;
 	private String ec2;
@@ -31,11 +33,13 @@ public class TinvarianteTester {
 	private String ec10;
 	private String ec11;
 	private String ec12;
+	private boolean EncontreUno= false;
 	
 	public TinvarianteTester() {
 		disparadas = new String ("");
 		i=0;
 		veces = new int[] {0,0,0,0,0,0,0,0,0,0,0,0,0}; //cantidad de veces que fue encontrada cada ec. de T-inv
+		vecesParciales = new int[] {0,0,0,0,0,0,0,0,0,0,0,0,0}; //cantidad de veces que fue encontrada cada ec. de T-inv
 		ec0 = new String ("q r i f g j x 2 v b");
 		ec1 = new String ("w t i f g j x 2 v b");
 		ec2 = new String ("e y i f g j x 2 v b");
@@ -50,6 +54,7 @@ public class TinvarianteTester {
 		ec11 = new String ("e y u o p a s 1 d h k 3 c b");
 		ec12 = new String ("n m");
 		vectorCorte = new int[] {1,1,1,1,1,1,1,1,1,1,1,1,1}; //cuando sean todos ceros deja de buscar ecuaciones de T-inv
+		vectorCorte2 = new int[] {1,1,1,1,1,1,1,1,1,1,1,1,1}; //cuando sean todos ceros deja de buscar ecuaciones de T-inv
 		
 		ecuaciones = new String[] {ec0, ec1, ec2, ec3, ec4, ec5, ec6, ec7, ec8, ec9, ec10, ec11, ec12};
 		cargarDisparadas();
@@ -84,8 +89,52 @@ public class TinvarianteTester {
 	    else i=1;
 	}
 	
+	
+	
+	public void busqueda2 (String cad, String regex, String ec) {
+//		System.out.println(i);
+		Pattern pattern = Pattern.compile(regex);
+	    Matcher matcher = pattern.matcher(cad);
+	    
+	    if (matcher.find()) {// busco la primera ocurrencia de un disparo de la transicion
+	    	cad = cad.replaceFirst(regex, " ");
+	    	i = i-2;
+	    	if(i <0){  //si ya encontro todas las q buscaba edito las disparadas posta
+	    		disparadas = cad;
+	    		i = 0;
+	    	}
+	    	else {
+	    		char c = ec.charAt(i);  //obtengo la prox. transicion
+	    		regex = Character.toString(c);  //la paso a formato String
+	            busqueda2(cad, regex, ec);  //llamada recursiva
+	    	}
+	    }
+	    else {//No encontre disparos de la transicion en cuestion
+	    	
+	    	if(EncontreUno) {//Y ya habia encontrado al menos un disparo de una transicion de la ecuacion 
+	    		i=1;//Corto la busqueda
+	    	}
+	    	else {//Y todavia no habia encontrado
+	    		i = i-2;
+		    	if(i <0){  //si ya encontro todas las que buscaba reemplazo secuencia de disparadas remanente con la secuencia sin los disparos reemplazados 
+		    		disparadas = cad;
+		    		i = 1;
+		    	}
+		    	else {
+		    		char c = ec.charAt(i);  //obtengo la prox. transicion
+		    		regex = Character.toString(c);  //la paso a formato String
+		            busqueda2(cad, regex, ec);  //llamada recursiva
+		    	}
+	    		
+	    	}
+	    }
+	    
+	    
+	}
+	
+	
 	/**
-	 * Metodo testear. Busca las ecuaciones de T-inv y anota cuantas veces se repiten
+	 * Metodo testear. Busca las ecuaciones de T-inv y anot a cuantas veces se repiten
 	 */
 	public void testear() {
 		char c;
@@ -105,6 +154,26 @@ public class TinvarianteTester {
 				}
 			}
 		}
+
+		while(!todosCeros(vectorCorte2)) { //mientras no sean todos ceros sigue buscando T-invariantes parciales, cuando sean todos ceros deja de buscar 
+			for(int j=0; j < ecuaciones.length; j++) {
+				c = ecuaciones[j].charAt(ecuaciones[j].length()-1);//comienzo la busqueda por la ultima transicion de la ecuacion
+				regex = "\\b"+new String (Character.toString(c))+"\\b";
+				i= ecuaciones[j].length()-1;// indice de la ultima posicion en el string de la ecuacion
+				busqueda2(disparadas, regex, ecuaciones[j]);
+				if(i == 0) {  //si i=0 encontro la secuencia completa entonces aumento el contador de veces
+					vecesParciales[j]++;
+				}
+				else { //si i es distinto de cero significa q no encontro toda la secuencia de la ecuacion o ya no hay transiciones de esa ecuacion
+					//System.out.println("La ecuacion "+j+" quedo incompleta");
+					vectorCorte2[j] = 0; //al ponerle 0 significa que a esa ecuacion ya no la puede encontrar completa
+//					i=0;
+				}
+				
+			}
+		}
+		
+		
 	}
 	
 	
@@ -124,8 +193,14 @@ public class TinvarianteTester {
 	
 	public void imprimoResultados() {
 //		System.out.println(disparadas);
-		for(int k=0; k < veces.length; k++) {
+		System.out.println();
+		for(int k=0; k < veces.length; k++) {			
 			System.out.println("Ec"+k+" se repite "+veces[k]+" veces");
+		}
+		
+		System.out.println();
+		for(int k=0; k < veces.length; k++) {
+			System.out.println("Ec"+k+" se repite parcialmente "+vecesParciales[k]+" veces");
 		}
 		int q=0;
 		int h=0;
@@ -135,6 +210,9 @@ public class TinvarianteTester {
 			}
 			q++;
 		}
+		
+		
+		System.out.println();
 		System.out.println("Sobraron "+h+" transiciones");
 	}
 

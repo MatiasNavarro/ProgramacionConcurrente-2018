@@ -23,7 +23,7 @@ public class Main {
 	private static final int EXECUTION_TIME=15;
 	private static final TimeUnit TIME_UNIT=TimeUnit.SECONDS;
 	private static final boolean FLAG_LOGICA=false; //FLAG_LOGICA = true (temporal) - FLAG_LOGICA = false (inmediata)
-	private static final int POLITIC=2;
+	private static final int POLICY=1;
 	/*
 	 * La politica puede ser:
 	 *	0: Aleatoria.
@@ -56,7 +56,7 @@ public class Main {
 		rdp.setFlagLogica(FLAG_LOGICA);
 		
 		monitor.configRdp(); 				//Configura la red de petri para el monitor segun el path.
-		monitor.setPolitica(POLITIC);
+		monitor.setPolitica(POLICY);
 		
 		int cant_transiciones=monitor.getCantTransiciones();
 		if(cant_transiciones==0){
