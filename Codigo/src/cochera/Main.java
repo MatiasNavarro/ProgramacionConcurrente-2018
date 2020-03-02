@@ -20,10 +20,10 @@ public class Main {
 	private static String name_file_console="";
 	private static String name_file="";
 	private static final int NUMBER_OF_THREADS=17;
-	private static final int EXECUTION_TIME=50;
+	private static final int EXECUTION_TIME=15;
 	private static final TimeUnit TIME_UNIT=TimeUnit.SECONDS;
-	private static final boolean FLAG_LOGICA=true; //FLAG_LOGICA = true (temporal) - FLAG_LOGICA = false (inmediata)
-	private static final int POLITIC=0;
+	private static final boolean FLAG_LOGICA=false; //FLAG_LOGICA = true (temporal) - FLAG_LOGICA = false (inmediata)
+	private static final int POLITIC=1;
 	/*
 	 * La politica puede ser:
 	 *	0: Aleatoria.
@@ -55,7 +55,7 @@ public class Main {
 		RedDePetri rdp = RedDePetri.getInstance();
 		rdp.setFlagLogica(FLAG_LOGICA);
 		
-		monitor.configRdp(name_file); 				//Configura la red de petri para el monitor segun el path.
+		monitor.configRdp(); 				//Configura la red de petri para el monitor segun el path.
 		monitor.setPolitica(POLITIC);
 		
 		int cant_transiciones=monitor.getCantTransiciones();

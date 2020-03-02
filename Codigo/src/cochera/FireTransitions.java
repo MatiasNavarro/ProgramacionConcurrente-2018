@@ -14,8 +14,9 @@ public class FireTransitions implements Runnable {
     
 /**
  * 
- * @param transiciones_viaje arreglo de enteros que representan las transiciones que disparara el hilo  (viajes en el tren)
+ * @param transiciones arreglo de enteros que representan las transiciones que disparara el hilo
  * @param monitor
+ * @param log para generar el logFile
  */
     public FireTransitions(
     		int[] transiciones, 

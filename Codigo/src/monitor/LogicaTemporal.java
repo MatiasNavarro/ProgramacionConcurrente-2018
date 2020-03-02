@@ -95,7 +95,7 @@ public class LogicaTemporal {
 			
 			if(t_sensibilizadas_antes_disparar[transicion]==1 && t_sensibilizadas_despues_disparar[transicion]==1) { //Si la transicion se encontraba sensibilizada antes del disparo y sigue sensibilizada despues de disparar, no se resetea el contador de la misma 
 				if(!(transicion==t_a_disparar)) { //A MENOS QUE justamente sea esa la transicion disparada (tiene que reinizializar su cronometro)
-					this.vector_de_time_stamps[transicion].setTimeStamp();
+					this.vector_de_time_stamps[transicion].setTimeStamp(); //continua la cuenta
 				}
 			}
 			
@@ -128,7 +128,7 @@ public class LogicaTemporal {
 	public void updateVectorZ(int[] q){
 		
 		for (int i= 0; i < this.cantidad_de_transiciones; i++) { //recorro todas las transiciones y hago and entre las sensibilizadas por E AND B y su ventana de tiempo
-			if(isInWindowsTime(i) & q[i]==1) {
+			if(isInWindowsTime(i) & q[i]==1) { 
 				vector_z[i]=1;
 			}
 			else {
@@ -162,14 +162,14 @@ public class LogicaTemporal {
 		}
 		
 		//Comparaciones necesarias para verificar si una transicion esta en su intervalo de disparo
-		boolean comparacion1=this.vector_de_time_stamps[transicion].getMillis()>=(long)vector_de_intervalos[transicion][0];
-		boolean comparacion2=this.vector_de_time_stamps[transicion].getMillis()<=(long)vector_de_intervalos[transicion][1];
+		boolean comparacion1=this.vector_de_time_stamps[transicion].getMillis()>=(long)vector_de_intervalos[transicion][0];  //es el tiempo actual mayor que alfa?
+		boolean comparacion2=this.vector_de_time_stamps[transicion].getMillis()<=(long)vector_de_intervalos[transicion][1];  //es el tiempo actual menor que beta?
 		
 		//Comparaciones necesarias para saber si es una transicion inmediatas
-		boolean comparacion3=(long)vector_de_intervalos[transicion][1]==(long)-1;
-		boolean comparacion4=(long)vector_de_intervalos[transicion][0]==0;
+		boolean comparacion4=(long)vector_de_intervalos[transicion][0]==0;			//es alfa 0?
+		boolean comparacion3=(long)vector_de_intervalos[transicion][1]==(long)-1;  //es beta -1?
 		
-		if((comparacion1&&(comparacion2||comparacion3))||construirVectorTransicionesInmediatas()[transicion]==1||comparacion4) {
+		if((comparacion1&&(comparacion2||comparacion3))||construirVectorTransicionesInmediatas()[transicion]==1||comparacion4) { //si el tiempo actual es mayor que alfa y beta -1 o si es inmediata o alfa cero
 			return true;
 		}
 		else {
@@ -182,7 +182,7 @@ public class LogicaTemporal {
 	/**
 	 * Metodo construirVectorTransicionesInmediatas.
 	 * Genera un vector de transiciones indicando con un uno si la transicion es inmediata o con un cero si no lo es.
-	 * Lo que hace es fijarse si en la tabla del excel, la transicion correspondiente tiene alfa 0 y beta -1
+	 * Lo que hace es fijarse si la transicion correspondiente tiene alfa 0 y beta -1
 	 * @return int[] vector de transiciones inmediatas
 	 */
 	public int[] construirVectorTransicionesInmediatas(){

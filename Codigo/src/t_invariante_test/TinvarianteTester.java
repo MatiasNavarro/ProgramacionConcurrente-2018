@@ -35,7 +35,7 @@ public class TinvarianteTester {
 	public TinvarianteTester() {
 		disparadas = new String ("");
 		i=0;
-		veces = new int[] {0,0,0,0,0,0,0,0,0,0,0,0,0};
+		veces = new int[] {0,0,0,0,0,0,0,0,0,0,0,0,0}; //cantidad de veces que fue encontrada cada ec. de T-inv
 		ec0 = new String ("q r i f g j x 2 v b");
 		ec1 = new String ("w t i f g j x 2 v b");
 		ec2 = new String ("e y i f g j x 2 v b");
@@ -49,7 +49,7 @@ public class TinvarianteTester {
 		ec10 = new String ("w t u o p a s 1 d h k 3 c b");
 		ec11 = new String ("e y u o p a s 1 d h k 3 c b");
 		ec12 = new String ("n m");
-		vectorCorte = new int[] {1,1,1,1,1,1,1,1,1,1,1,1,1};
+		vectorCorte = new int[] {1,1,1,1,1,1,1,1,1,1,1,1,1}; //cuando sean todos ceros deja de buscar ecuaciones de T-inv
 		
 		ecuaciones = new String[] {ec0, ec1, ec2, ec3, ec4, ec5, ec6, ec7, ec8, ec9, ec10, ec11, ec12};
 		cargarDisparadas();
@@ -109,7 +109,7 @@ public class TinvarianteTester {
 				}
 				else { //si i es distinto de cero significa q no encontro toda la secuencia de la ecuacion o ya no hay transiciones de esa ecuacion
 					//System.out.println("La ecuacion "+j+" quedo incompleta");
-					vectorCorte[j] = 0;
+					vectorCorte[j] = 0; //al ponerle 0 significa que a esa ecuacion ya no la puede encontrar completa
 					i=0;
 				}
 			}

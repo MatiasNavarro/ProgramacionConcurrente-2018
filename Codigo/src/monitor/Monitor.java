@@ -64,7 +64,7 @@ public class Monitor {
 	 * Crea una cola por cada transicion de la red.
 	 * @param path Direccion absoluta del archivo Excel en donde se encuentran las matrices de la red de Petri
 	 */
-	public void configRdp(String path){
+	public void configRdp(){
 		try {
 	            mutex.acquire();
 	    }
@@ -152,8 +152,6 @@ public class Monitor {
 	public void  dispararTransicion(int transicion) {
 		int[] m;
 
-//		if(!condicion)
-//			System.out.println("condicion false");
 		while(condicion){
 			try{
 				mutex.acquire(); //Adquiero acceso al monitor.
@@ -165,15 +163,8 @@ public class Monitor {
 			boolean k=true; //Variable booleana de control.  
 			log.setFlagLog(getCondicion());		
 			
-//			if(politica.checkDisparo(rdp.getSensibilizadasExtendido(),transicion))
 				k=rdp.disparar(transicion); //Disparo red de petri. //Si se logra disparar, k se pone en true.
-//			else
-//				k=false;
 			
-			
-			
-			//System.out.println(k);
-			//System.out.println(transicion);
 			if(k){ //K=true verifica el estado de la red.
 				int[] Vs=rdp.getSensibilizadasExtendido(); //get transiciones sensibilizadas
 
@@ -187,7 +178,7 @@ public class Monitor {
 				}	
 				if(OperacionesMatricesListas.isNotAllZeros(m)){ //Hay posibilidad de disparar una transicion.
 					try{
-						int transicionADisparar=politica.politicaAleatoria(m); //Pregunto a politica 
+						int transicionADisparar=politica.cualDisparo(m); //Pregunto a politica 
 						this.log.addMessage(String.valueOf(transicionADisparar), 4);
 						String salto_linea="\n";
 						this.log.addMessage(salto_linea, 4);
@@ -205,7 +196,6 @@ public class Monitor {
 				}
 				else{ //No hay posibilidad de disparar una transicion.
 					k=false;
-					//System.out.println("K false");
 					mutex.release();
 					return;
 				}
@@ -248,7 +238,7 @@ public class Monitor {
 	        		
 	        	}
 	        	else {
-	        		while(!colas[i].isEmpty()) {colas[i].resume();}
+	        		while(!colas[i].isEmpty()) {colas[i].resume();} 
 	        	}
 	        	}
 			mutex.release();
