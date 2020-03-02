@@ -516,7 +516,7 @@ public class RedDePetri{
 
 	/**
 	 * Metodo getConjuncionEAndBandL
-	 * @return int[] Vector resultante de:  vector E and vector B.
+	 * @return int[] Vector resultante de:  vector E AND B and L and C.
 	 */
 	public int[] getConjuncionEAndBandLandC(){
 		int E[]= this.getSensibilizadas();

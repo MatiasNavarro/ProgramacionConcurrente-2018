@@ -68,7 +68,7 @@ public class LogicaTemporal {
 	 * Metodo updateTimeStamp
 	 * Actualiza el vector de timeStamps o contadores.
 	 * @param t_sensibilizadas_antes_disparar Vector de transiciones sensibilizadas antes de disparar la transicion elegida
-	 * @param t_sensibilizadas_despues_disparar Vector de transiciones sensibilizadas despues de disparar la transicion elegida ( E AND B )
+	 * @param t_sensibilizadas_despues_disparar Vector de transiciones sensibilizadas despues de disparar la transicion elegida ( E AND B and L and C)
 	 * @param t_a_disparar Transicion elegida para disparar
 	 */
 	public void updateTimeStamp(int[] t_sensibilizadas_antes_disparar, int[] t_sensibilizadas_despues_disparar,  int t_a_disparar){
@@ -123,7 +123,7 @@ public class LogicaTemporal {
 	/**
 	 * Metodo updateVectorZ
 	 * Actualiza el vector Z.
-	 * @param q Vector resultante de hacer una operacion AND entre el vector E y el vector B
+	 * @param q Vector resultante de hacer E AND B and L and C
 	 */
 	public void updateVectorZ(int[] q){
 		
@@ -140,7 +140,7 @@ public class LogicaTemporal {
 	/**
 	 * Metodo getVectorZ_Actualizado
 	 * Permite obtener la ultima version del vector Z
-	 * @param  q Vector resultante de hacer una operacion AND entre el vector E y el vector B
+	 * @param  q Vector resultante de hacer E AND B and L and C
 	 * @return int[] Ultima version del vector Z.
 	 */
 	public int[] getVectorZ_Actualizado(int[] q){
